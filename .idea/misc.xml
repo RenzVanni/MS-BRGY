@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/discovery/pom.xml" />
+        <option value="$PROJECT_DIR$/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/user/pom.xml" />
+        <option value="$PROJECT_DIR$/account/pom.xml" />
+        <option value="$PROJECT_DIR$/services/account/pom.xml" />
+        <option value="$PROJECT_DIR$/services/residents/pom.xml" />
+        <option value="$PROJECT_DIR$/services/officials/pom.xml" />
+        <option value="$PROJECT_DIR$/services/reports/pom.xml" />
+        <option value="$PROJECT_DIR$/shared/pom.xml" />
+        <option value="$PROJECT_DIR$/untitled/pom.xml" />
+        <option value="$PROJECT_DIR$/services/reports/blotter/pom.xml" />
+        <option value="$PROJECT_DIR$/services/reports/complaint/pom.xml" />
+        <option value="$PROJECT_DIR$/services/reports/disasterAndEmergency/pom.xml" />
+        <option value="$PROJECT_DIR$/services/reports/healthAndSanitation/pom.xml" />
+        <option value="$PROJECT_DIR$/services/reports/incident/pom.xml" />
+        <option value="$PROJECT_DIR$/services/PDF_Builder/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/services/reports/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="liberica-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,128 @@
+services:
+  pgadmin:
+    container_name: ms_pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5001:80"
+    restart: unless-stopped
+
+  postgres_account:
+    container_name: accountdb
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: accountdb
+      PGDATA: /var/lib/postgresql/data/account
+    volumes:
+      - postgres_account_data:/var/lib/postgresql/data/account
+    ports:
+      - "5401:5432"
+    restart: unless-stopped
+
+  postgres_residents:
+    container_name: residentsdb
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: residentsdb
+      PGDATA: /var/lib/postgresql/data/residents
+    volumes:
+      - postgres_residents_data:/var/lib/postgresql/data/residents
+    ports:
+      - "5402:5432"
+    restart: unless-stopped
+
+  postgres_officials:
+    container_name: officialsdb
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: officialsdb
+      PGDATA: /var/lib/postgresql/data/officials
+    volumes:
+      - postgres_official_data:/var/lib/postgresql/data/officials
+    ports:
+      - "5403:5432"
+    restart: unless-stopped
+
+  blotter-db:
+    container_name: blotter-db
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: blotter
+      PGDATA: /var/lib/postgresql/data/blotter
+    volumes:
+      - blotter-db-data:/var/lib/postgresql/data/blotter
+    ports:
+      - "5404:5432"
+    restart: unless-stopped
+
+  complaint-db:
+    container_name: complaint-db
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: complaint
+      PGDATA: /var/lib/postgresql/data/complaint
+    volumes:
+      - complaint-db-data:/var/lib/postgresql/data/complaint
+    ports:
+      - "5405:5432"
+    restart: unless-stopped
+
+  disasterAndEmergency-db:
+    container_name: disasterAndEmergency-db
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: dae
+      PGDATA: /var/lib/postgresql/data/disasterAndEmergency
+    volumes:
+      - disasterAndEmergency-db-data:/var/lib/postgresql/data/disasterAndEmergency
+    ports:
+      - "5406:5432"
+    restart: unless-stopped
+
+  healthAndSanitation-db:
+    container_name: healthAndSanitation-db
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: has
+      PGDATA: /var/lib/postgresql/data/healthAndSanitation
+    volumes:
+      - healthAndSanitation-db-data:/var/lib/postgresql/data/healthAndSanitation
+    ports:
+      - "5407:5432"
+    restart: unless-stopped
+
+  incident-db:
+    container_name: incident-db
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: incident
+      PGDATA: /var/lib/postgresql/data/incident
+    volumes:
+      - incident-db-data:/var/lib/postgresql/data/incident
+    ports:
+      - "5408:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres_account_data:
+  postgres_residents_data:
+  postgres_official_data:
+  blotter-db-data:
+  complaint-db-data:
+  disasterAndEmergency-db-data:
+  healthAndSanitation-db-data:
+  incident-db-data:
+  pgadmin:

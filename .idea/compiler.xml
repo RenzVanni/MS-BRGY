@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
+        <module name="shared" />
+        <module name="discovery" />
+      </profile>
+      <profile name="Annotation profile for PDF_Builder" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="PDF_Builder" />
+        <module name="blotter" />
+        <module name="complaint" />
+        <module name="officials" />
+        <module name="residents" />
+        <module name="healthAndSanitation" />
+        <module name="incident" />
+        <module name="disasterAndEmergency" />
+        <module name="account" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="reports" target="17" />
+      <module name="untitled" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="PDF_Builder" options="-parameters" />
+      <module name="account" options="-parameters" />
+      <module name="blotter" options="-parameters" />
+      <module name="complaint" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="disasterAndEmergency" options="-parameters" />
+      <module name="discovery" options="-parameters" />
+      <module name="healthAndSanitation" options="-parameters" />
+      <module name="incident" options="-parameters" />
+      <module name="officials" options="-parameters" />
+      <module name="reports" options="-parameters" />
+      <module name="residents" options="-parameters" />
+    </option>
+  </component>
+</project>
