@@ -18,7 +18,7 @@ public class PdfTest_Controller {
     @GetMapping
     public void generatePdf(HttpServletResponse response) {
         response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "inline; filename=testPdf.pdf");
+        response.setHeader("Content-Disposition", "inline; filename=PdfType1.pdf");
 
         try {
             service.generatePdf(response.getOutputStream());

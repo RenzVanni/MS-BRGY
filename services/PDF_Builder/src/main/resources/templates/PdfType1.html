@@ -2,9 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title th:text="${certificate}">Title</title>
+    <style>
+        @page{
+            size: A4;
+            margin: 0;
+            border: 1px solid black;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        table {
+            background-color: transparent;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        h1, h3 {
+            margin: 0;
+            font-weight: normal;
+            font-size: 23px;
+        }
+
+         h2 {
+            margin: 5px 0 0 0;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .officials-side {
+            width: 30%;
+            vertical-align: top;
+            padding: 30px 20px 30px 20px;
+            position: relative;
+            height: 100%;
+        }
+        .context-side {
+            width: 70%;
+            vertical-align: top;
+            padding: 30px 20px 30px 20px;
+        }
+        .name {
+            text-align: center;
+            margin: 0;
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .kagawad {
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        span {
+            font-size: 12px;
+            text-transform: capitalize;
+            font-weight: normal;
+        }
+
+        .field {
+            margin: 0;
+            text-align: center;
+            border-bottom: 2px solid black;
+            width: 100%;
+        }
+        .header {
+            border-bottom: 1px solid black;
+        }
+
+    </style>
 </head>
 <body>
+    <table style="height: 100%;">
+        <tr>
+            <td colspan="2">
+                <div th:replace="fragments/Header1 :: Header1"></div>
+            </td>
+        </tr>
+        <tr style="height: 100%;">
+            <td class="officials-side"
+                th:style="'background-image: url(' + '\'data:image/png;base64,' + ${gradient} + '\'' + '); background-size: cover; background-position: center; background-repeat: no-repeat;'">
 
+                <p th:utext="${name} + '<br/> <span>' + ${position} + '</span>'" class="name" style="margin-bottom: 35px;">
+                    {name} <br />
+                    <span>{position}</span>
+                </p>
+
+                <p class="kagawad">KAGAWAD:</p>
+
+                <p class="kagawad" th:each="official : ${officials}" th:utext="${official.name} + '<br /> <span> ' + ${official.position} + '</span>'">
+                    {name} <br />
+                    <span>{position}</span>
+                </p>
+            </td>
+            <td class="context-side"
+                style="position: relative;">
+                <div th:replace="${fragmentPath} :: content"></div>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
