@@ -58,4 +58,41 @@ public class PdfTest_Service {
         renderer.layout();
         renderer.createPDF(outputStream);
     }
+
+    //generate certificate of indigency
+    public void indigencyCert(OutputStream outputStream) throws IOException {
+        Context context = new Context();
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("title", "barangay zone iv");
+        variables.put("certificate", "certificate of indigency");
+        variables.put("fragmentPath", "fragments/Indigency");
+        variables.put("province", "cavite");
+        variables.put("city", "dasmarinas");
+        variables.put("telNo", "(046) 471-1247");
+        variables.put("name", "Jia Shie");
+        variables.put("position", "punong barangay");
+        variables.put("officials", List.of(
+                Map.of("name", "wonyoung", "position", "secretary"),
+                Map.of("name", "karina", "position", "treasurer")
+        ));
+
+        byte[] imageBytes = Files.readAllBytes(Paths.get("C:\\Users\\Admin\\OneDrive\\Pictures\\zzang\\ian_(1).jpeg"));
+        String mimeType = Files.probeContentType(Paths.get("C:\\Users\\Admin\\OneDrive\\Pictures\\zzang\\ian_(1).jpeg"));
+        String base = Base64.getEncoder().encodeToString(imageBytes);
+        variables.put("image", base);
+        variables.put("imageType", mimeType);
+
+        ClassPathResource gradient = new ClassPathResource("/static/pdfGradient.png");
+        byte[] gradientBytes = FileCopyUtils.copyToByteArray(gradient.getInputStream());
+        String gradientBase = Base64.getEncoder().encodeToString(gradientBytes);
+        variables.put("gradient", gradientBase);
+
+        context.setVariables(variables);
+        String htmlContent = templateEngine.process("PdfType1", context);
+
+        ITextRenderer renderer = new ITextRenderer();
+        renderer.setDocumentFromString(htmlContent);
+        renderer.layout();
+        renderer.createPDF(outputStream);
+    }
 }

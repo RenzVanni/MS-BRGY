@@ -97,8 +97,14 @@
                     <span>{position}</span>
                 </p>
             </td>
-            <td class="context-side"
-                style="position: relative;">
+            <td class="context-side">
+
+                <p th:text="${certificate}"
+                   class="name"
+                   style="margin-bottom: 35px;">
+                    {certificate}
+                </p>
+
                 <div th:replace="${fragmentPath} :: content"></div>
             </td>
         </tr>

@@ -27,4 +27,16 @@ public class PdfTest_Controller {
         }
     }
 
+    @GetMapping("/indigency")
+    public void indigencyCert(HttpServletResponse response) {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "inline; filename=PdfType1.pdf");
+
+        try {
+            service.indigencyCert(response.getOutputStream());
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
