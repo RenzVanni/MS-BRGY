@@ -1,3 +1,27 @@
 <div th:fragment="content">
+    <p style="margin: 0; margin-bottom: 10px">To: <span class="name">{Name}</span></p>
+    <p style="text-indent: 28px; font-size: 11px; margin: 0">{role}</p>
+    <p style="text-indent: 28px; font-size: 11px; margin: 0">City of <span style="text-transform: capitalize">{city name}</span></p>
 
+    <p style="text-indent: 28px">This is certify that <span class="name" style="text-transform: capitalize">{name}</span>. is a
+        Filipino Citizen and bonafide resident of <span class="name" style="text-transform: capitalize">{address}</span>., Brgy.
+        Zone IV, Dasmarinas City, Cavite.</p>
+
+    <p style="text-indent: 28px">It is further certified that above-named individual belongs to a low/no income bracket or an indigent family in this Barangay.</p>
+
+    <p style="text-indent: 28px">This certification is being issued upon the request of above mention name for the purpose/s of compliance to <span class="name" style="text-transform: capitalize">{purpose}</span>.</p>
+
+    <p style="text-indent: 28px">Given this 12th day of July, 2023</p>
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="text-align: right; vertical-align: middle;">
+                <p style="text-align: center; display: inline-block;">
+                    <span class="name">{name}</span>
+                    <br/>
+                    <span style="text-size: 11px">{position}</span>
+                </p>
+            </td>
+        </tr>
+    </table>
 </div>

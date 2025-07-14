@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
@@ -39,8 +41,8 @@ public class PdfTest_Service {
                 Map.of("name", "karina", "position", "treasurer")
         ));
 
-        byte[] imageBytes = Files.readAllBytes(Paths.get("C:\\Users\\Admin\\OneDrive\\Pictures\\zzang\\ian_(1).jpeg"));
-        String mimeType = Files.probeContentType(Paths.get("C:\\Users\\Admin\\OneDrive\\Pictures\\zzang\\ian_(1).jpeg"));
+        byte[] imageBytes = Files.readAllBytes(Paths.get("/home/renz/Documents/ulzzang/ian.jpeg"));
+        String mimeType = Files.probeContentType(Paths.get("/home/renz/Documents/ulzzang/ian.jpeg"));
         String base = Base64.getEncoder().encodeToString(imageBytes);
         variables.put("image", base);
         variables.put("imageType", mimeType);
@@ -76,8 +78,8 @@ public class PdfTest_Service {
                 Map.of("name", "karina", "position", "treasurer")
         ));
 
-        byte[] imageBytes = Files.readAllBytes(Paths.get("C:\\Users\\Admin\\OneDrive\\Pictures\\zzang\\ian_(1).jpeg"));
-        String mimeType = Files.probeContentType(Paths.get("C:\\Users\\Admin\\OneDrive\\Pictures\\zzang\\ian_(1).jpeg"));
+        byte[] imageBytes = Files.readAllBytes(Paths.get("/home/renz/Documents/ulzzang/ian.jpeg"));
+        String mimeType = Files.probeContentType(Paths.get("/home/renz/Documents/ulzzang/ian.jpeg"));
         String base = Base64.getEncoder().encodeToString(imageBytes);
         variables.put("image", base);
         variables.put("imageType", mimeType);
@@ -86,6 +88,13 @@ public class PdfTest_Service {
         byte[] gradientBytes = FileCopyUtils.copyToByteArray(gradient.getInputStream());
         String gradientBase = Base64.getEncoder().encodeToString(gradientBytes);
         variables.put("gradient", gradientBase);
+
+        LocalDate today = LocalDate.now();
+        int day = today.getDayOfMonth();
+        String month = today.format(DateTimeFormatter.ofPattern("MMMM"));
+        int year = today.getYear();
+
+        System.out.println(month + " " + day + " " + year);
 
         context.setVariables(variables);
         String htmlContent = templateEngine.process("PdfType1", context);
