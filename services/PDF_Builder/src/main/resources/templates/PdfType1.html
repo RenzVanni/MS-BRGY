@@ -62,6 +62,26 @@
             font-weight: normal;
         }
 
+        .content {
+            font-size: 16px;
+        }
+
+        .content-mainText {
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .content-subText {
+            font-size: 16px;
+        }
+
+        .content-smallText {
+            font-size: 11px;
+            margin: 0
+        }
+
         .field {
             margin: 0;
             text-align: center;
@@ -100,10 +120,13 @@
             <td class="context-side">
 
                 <p th:text="${certificate}"
-                   class="name"
-                   style="margin-bottom: 35px;">
+                   class="content-mainText"
+                   style="text-align: center">
                     {certificate}
                 </p>
+
+                <br/>
+                <br/>
 
                 <div th:replace="${fragmentPath} :: content"></div>
             </td>

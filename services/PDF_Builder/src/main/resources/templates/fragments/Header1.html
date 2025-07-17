@@ -9,7 +9,7 @@
     <tbody>
     <tr>
         <td style="width: 20%; text-align: center;">
-            <img th:src="'data:' + ${imageType} + ';base64,' + ${image}" alt="img" style="width: 120px; height: 120px; object-fit: cover;" />
+            <img th:src="${imgPath}" style="width: 120px; height: 120px; object-fit: cover;" />
         </td>
         <td style="text-align: center; padding: 10px 0 10px 0">
             <p style="margin-top: 0; font-size: 12px;">Republic of the Philippines <br/>
@@ -17,11 +17,11 @@
                 City of <span th:text="${city}" style="text-transform: capitalize">{city name}</span></p>
 
             <h1 th:text="${title}" style="font-size: 30px; font-weight: bold; text-transform: uppercase;">{Barangay Name}</h1>
-            <h1 style="font-size: 23px;">OFFICE OF SANGGUIANG BARANGAY</h1>
+            <h1 style="font-size: 23px;">OFFICE OF SANGGUNIANG BARANGAY</h1>
             <h2 th:text="'Tel. No. ' + ${telNo}" style="font-size: 13px">{Telephone No.}</h2>
         </td>
         <td style="width: 20%; text-align: center;">
-            <img th:src="'data:' + ${imageType} + ';base64,' + ${image}" alt="img" style="width: 120px; height: 120px; object-fit: cover;" />
+            <img th:src="${imgPath}" alt="img" style="width: 120px; height: 120px; object-fit: cover;" />
         </td>
     </tr>
     </tbody>

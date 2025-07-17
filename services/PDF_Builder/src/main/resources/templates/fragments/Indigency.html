@@ -1,25 +1,53 @@
 <div th:fragment="content">
-    <p style="margin: 0; margin-bottom: 10px">To: <span class="name">{Name}</span></p>
-    <p style="text-indent: 28px; font-size: 11px; margin: 0">{role}</p>
-    <p style="text-indent: 28px; font-size: 11px; margin: 0">City of <span style="text-transform: capitalize">{city name}</span></p>
+    <p style="margin: 0; margin-bottom: 3px" class="content">To: <span th:text="${toName}" class="content-mainText">{toName}</span></p>
+    <p th:text="${toPosition}" class="content-smallText" style="text-indent: 28px; text-transform: capitalize">{toPosition}</p>
+    <p style="text-indent: 28px;" class="content-smallText">City of <span th:text="${city}" class="content-smallText" style="text-transform: capitalize">{city}</span></p>
 
-    <p style="text-indent: 28px">This is certify that <span class="name" style="text-transform: capitalize">{name}</span>. is a
-        Filipino Citizen and bonafide resident of <span class="name" style="text-transform: capitalize">{address}</span>., Brgy.
-        Zone IV, Dasmarinas City, Cavite.</p>
+    <br/>
+    <br/>
+    <br/>
 
-    <p style="text-indent: 28px">It is further certified that above-named individual belongs to a low/no income bracket or an indigent family in this Barangay.</p>
+    <p style="text-indent: 28px" class="content">This is certify that
+        <span th:if="${forSelf}" th:text="${applicantName} + '. '" class="content-mainText" style="text-transform: capitalize">{applicantName}</span>
+        <span th:unless="${forSelf}" th:text="${requestorName} + '. '" class="content-mainText" style="text-transform: capitalize">{requestorName}</span>Is a Filipino Citizen and bonafide resident of
+        <span th:text="${address}" class="content-mainText" style="text-transform: capitalize">{address}</span>, BRGY. ZONE
+        <span th:text="${zone}" class="content-subText" style="text-transform: uppercase">{zone}</span>,
+        <span th:text="${city}" class="content-subText" style="text-transform: uppercase">{city}</span> City,
+        <span th:text="${province}" class="content-subText" style="text-transform: uppercase">{province}</span>.</p>
 
-    <p style="text-indent: 28px">This certification is being issued upon the request of above mention name for the purpose/s of compliance to <span class="name" style="text-transform: capitalize">{purpose}</span>.</p>
+    <br/>
+    <br/>
 
-    <p style="text-indent: 28px">Given this 12th day of July, 2023</p>
+    <p style="text-indent: 28px" class="content">It is further certified that above-named individual belongs to a low/no income bracket or an indigent family in this Barangay.</p>
+
+    <br/>
+    <br/>
+
+    <p style="text-indent: 28px" class="content" th:if="${forSelf}">This certification is being issued upon the request of above mention name for the purpose/s of compliance to <span th:text="${purpose}" class="name" style="text-transform: capitalize">{purpose}</span>.</p>
+    <p style="text-indent: 28px" class="content" th:unless="${forSelf}">This certification is being issued upon the request of above mention name for the purpose/s of her <span th:text="${purpose}" class="name" style="text-transform: capitalize">{purpose}</span> of her husband,
+        <span th:text="${applicantName}" class="name" style="text-transform: capitalize">{applicantName}</span>.</p>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <p style="text-indent: 28px" class="content">Given this
+        <span th:text="${day}" class="content-subText">{day}</span>th day of
+        <span th:text="${month}" class="content-subText">{month}</span>,
+        <span th:text="${year}" class="content-subText">{year}</span></p>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
     <table style="width: 100%;">
         <tr>
             <td style="text-align: right; vertical-align: middle;">
                 <p style="text-align: center; display: inline-block;">
-                    <span class="name">{name}</span>
+                    <span th:text="${name}" class="name">{name}</span>
                     <br/>
-                    <span style="text-size: 11px">{position}</span>
+                    <span th:text="${position}" class="content-smallText">{position}</span>
                 </p>
             </td>
         </tr>

@@ -1,0 +1,74 @@
+<div th:fragment="content">
+    <table style="width: 100%; border-spacing: 0 20px; border-collapse: separate">
+        <tr>
+            <td style="width: 40%; text-transform: uppercase" class="content-mainText">business name:</td>
+            <td style="border-bottom: 1px solid black; text-align: center" th:text="${businessName}">{businessName}</td>
+        </tr>
+
+        <tr>
+            <td style="width: 40%; text-transform: uppercase" class="content-mainText">business address:</td>
+            <td style="border-bottom: 1px solid black; text-align: center" th:text="${businessAddress}">{businessAddress}</td>
+        </tr>
+
+        <tr>
+            <td style="width: 40%; text-transform: uppercase" class="content-mainText">business owner:</td>
+            <td style="border-bottom: 1px solid black; text-align: center" th:text="${businessOwner}">{businessOwner}</td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+    <p style="text-indent: 50px; text-transform: uppercase;">THE UNDERSIGNED INTERPOSES NO OBJECTION TO ISSUANCE OF THIS BUSINESS PERMIT PROVIDED, HOWEVER THAT THE APPLICANT SHALL ABIDE ALL PERTINENT CITY/BARANGAY ORDINANCES/RESOLUTIONS/EXECUTIVE ORDERS THAT MAY AFFECT HIS/HER BUSINESS OPERATIONS AS WELL AS THE BARANGAY WHEREIN HIS/HER ESTABLISHMENT IS LOCATED.</p>
+
+    <br/>
+    <br/>
+
+    <p style="text-indent: 50px;">Given this
+        <span th:text="${day}" class="content-subText">{day}</span>day of
+        <span th:text="${month}" class="content-subText">{month}</span>,
+        <span th:text="${year}" class="content-subText">{year}</span> at Barangay Hall Zone
+        <span style="text-transform: uppercase;" th:text="${zone}" class="content-subText">{zone}</span>, City of
+        <span th:text="${city}" class="content-subText">{city}</span>,
+        <span th:text="${province}" class="content-subText">{province}</span>.
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 50%;"></td>
+            <td style="width: 50%; padding: 0 30px 0 30px">
+                <p style="font-size: 12px">Approved by:</p>
+                <br/>
+                <p class="name" th:utext="${name} + '<br/> <span>' + ${position} + '</span>'">
+                    {name} <br />
+                    <span>{position}</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <span style="border-top: 1px solid black; text-align: center; padding: 10px 15px;">Applicant's Signature</span>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <p style="font-size: 11px;">This Clearance may be cancelled or revoked anytime should public safety and interest so demand
+        and upon the engagement in illegal transactions.(This permit shall be renewed on
+        <span th:text="${renewMonth}" style="font-size: 11px;">{month}</span>
+        <span th:text="${renewYear}" style="font-size: 11px;">{year}</span>).
+    </p>
+
+    <p style="font-weight: bold">Not Valid Without Official Dry Seal</p>
+</div>

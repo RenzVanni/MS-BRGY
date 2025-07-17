@@ -39,4 +39,16 @@ public class PdfTest_Controller {
         }
     }
 
+    @GetMapping("/businessClearance")
+    public void businessClearance(HttpServletResponse response) {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "inline; filename=PdfType1.pdf");
+
+        try {
+            service.businessClearance(response.getOutputStream());
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
