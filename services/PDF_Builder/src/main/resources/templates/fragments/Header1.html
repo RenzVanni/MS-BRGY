@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
-<table th:fragment="Header1" class="header">
-    <tbody>
-    <tr>
-        <td style="width: 20%; text-align: center;">
-            <img th:src="${imgPath}" style="width: 120px; height: 120px; object-fit: cover;" />
-        </td>
-        <td style="text-align: center; padding: 10px 0 10px 0">
-            <p style="margin-top: 0; font-size: 12px;">Republic of the Philippines <br/>
-                Province of <span th:text="${province}" style="text-transform: capitalize">{province name}</span> <br/>
-                City of <span th:text="${city}" style="text-transform: capitalize">{city name}</span></p>
+<div th:fragment="Header1" style="border-bottom: 1px solid black;">
+    <table style="width: 100%">
+        <tr>
+            <td style="width: 20%; text-align: center;">
+                <img th:src="${imgPath}" style="width: 120px; height: 120px; object-fit: cover;" />
+<!--                <img src="https://res.cloudinary.com/dwwcralpu/image/upload/v1742754952/residents/hbfdrnnhzndmgdpnonvl.jpg" alt="img" style="width: 120px; height: 120px; object-fit: cover;" />-->
+            </td>
+            <td style="text-align: center; padding: 10px 0 10px 0">
+                <p style="margin-top: 0; font-size: 12px;">Republic of the Philippines <br/>
+                    Province of <span th:text="${province}" style="text-transform: capitalize">{province name}</span> <br/>
+                    City of <span th:text="${city}" style="text-transform: capitalize">{city name}</span></p>
 
-            <h1 th:text="${title}" style="font-size: 30px; font-weight: bold; text-transform: uppercase;">{Barangay Name}</h1>
-            <h1 style="font-size: 23px;">OFFICE OF SANGGUNIANG BARANGAY</h1>
-            <h2 th:text="'Tel. No. ' + ${telNo}" style="font-size: 13px">{Telephone No.}</h2>
-        </td>
-        <td style="width: 20%; text-align: center;">
-            <img th:src="${imgPath}" alt="img" style="width: 120px; height: 120px; object-fit: cover;" />
-        </td>
-    </tr>
-    </tbody>
-</table>
-</body>
-</html>
+                <h1 th:text="${title}" th:style="'font-size: 30px; font-weight: bold; text-transform: uppercase; color: ' + ${color}">{Barangay Name}</h1>
+                <h1 style="font-size: 23px;">OFFICE OF SANGGUNIANG BARANGAY</h1>
+                <h2 th:text="'Tel. No. ' + ${telNo}" style="font-size: 13px">{Telephone No.}</h2>
+            </td>
+            <td style="width: 20%; text-align: center;">
+                <img th:src="${imgPath}" alt="img" style="width: 120px; height: 120px; object-fit: cover;" />
+<!--                <img src="https://res.cloudinary.com/dwwcralpu/image/upload/v1752694336/wonyoung_icons_xle48f.jpg" alt="img" style="width: 120px; height: 120px; object-fit: cover;" />-->
+            </td>
+        </tr>
+    </table>
+</div>
+

@@ -15,6 +15,7 @@ import java.io.IOException;
 public class PdfTest_Controller {
     private final PdfTest_Service service;
 
+    //barangay clearance
     @GetMapping
     public void generatePdf(HttpServletResponse response) {
         response.setContentType("application/pdf");
@@ -27,6 +28,7 @@ public class PdfTest_Controller {
         }
     }
 
+    //indigency
     @GetMapping("/indigency")
     public void indigencyCert(HttpServletResponse response) {
         response.setContentType("application/pdf");
@@ -39,6 +41,7 @@ public class PdfTest_Controller {
         }
     }
 
+    //business clearance
     @GetMapping("/businessClearance")
     public void businessClearance(HttpServletResponse response) {
         response.setContentType("application/pdf");
@@ -46,6 +49,32 @@ public class PdfTest_Controller {
 
         try {
             service.businessClearance(response.getOutputStream());
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //endorsement
+    @GetMapping("/endorsement")
+    public void endorsement(HttpServletResponse response) {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "inline; filename=PdfType2.pdf");
+
+        try {
+            service.endorsement(response.getOutputStream());
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //late birth registration
+    @GetMapping("/lateBirthRegistration")
+    public void lateBirthRegistration(HttpServletResponse response) {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "inline; filename=PdfType1.pdf");
+
+        try {
+            service.lateBirthRegistration(response.getOutputStream());
         } catch (IOException e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }

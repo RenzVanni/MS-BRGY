@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${certificate}">{Title}</title>
+
+    <style>
+        @page{
+            size: A4;
+            margin: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-mainText {
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .content-subText {
+            font-size: 16px;
+        }
+
+        .content-smallText {
+            font-size: 11px;
+            margin: 0
+        }
+    </style>
+
+</head>
+<body>
+    <div th:replace="fragments/Header1 :: Header1"></div>
+    <div style="padding: 40px 80px;">
+        <p th:text="${certificate}"
+           class="content-mainText"
+           style="text-align: center">
+            {certificate}
+        </p>
+
+        <br/>
+        <br/>
+
+        <div th:replace="${fragmentPath} :: content"></div>
+    </div>
+</body>
+</html>

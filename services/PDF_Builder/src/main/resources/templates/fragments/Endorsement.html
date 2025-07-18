@@ -1,0 +1,65 @@
+<div th:fragment="content">
+    <p style="margin: 0; margin-bottom: 3px" class="content">To: <span th:text="${toName}" class="content-mainText">{toName}</span></p>
+    <p th:text="${toPosition}" class="content-smallText" style="text-indent: 28px; text-transform: capitalize">{toPosition}</p>
+    <p style="text-indent: 28px;" class="content-smallText">City of <span th:text="${city}" class="content-smallText" style="text-transform: capitalize">{city}</span></p>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <p style="text-indent: 28px">Good Day!</p>
+
+    <br/>
+
+    <p style="text-indent: 28px">I am here to endorse
+        <span th:if="${forSelf}" th:text="${applicantName} + '. '" class="content-mainText">{applicantName}</span>
+        <span th:unless="${forSelf}" th:text="${requestorName} + '. '" class="content-mainText">{requestorName}</span> He is bonafide residents of
+        <span th:text="${address}" class="content-mainText">{address}</span>, Brgy. Zone
+        <span th:text="${zone}" class="content-subText">{zone}</span>,
+        <span th:text="${city}" class="content-subText">{city}</span>City,
+        <span th:text="${province}" class="content-subText">{province}</span>.
+    </p>
+
+    <br/>
+
+    <p style="text-indent: 28px">He is personally known to undersigned to be a person of good moral character, law-abiding citizen and well-rounded person.</p>
+
+    <br/>
+
+    <p style="text-indent: 28px">
+        In this regard, I would like to endorse him to your office for
+        <span th:text="${purpose}" class="content-subText">{purpose}</span>.
+    </p>
+
+    <br/>
+
+    <p style="text-indent: 28px">Issued this
+        <span th:text="${day}">{day}</span>th day of
+        <span th:text="${month}">{month}</span>,
+        <span th:text="${year}">{year}</span>
+    </p>
+
+    <br/>
+
+    <p style="text-indent: 28px">Thank you and more power!</p>
+
+    <br/>
+    <br/>
+
+    <table style="width: 100%">
+        <tr>
+            <td style="text-align: right">
+                <p  style="display: inline-block; text-align: left">
+                    <span style="font-size: 12px">Respectfully yours,</span>
+
+                    <br/>
+                    <br/>
+
+                    <span th:text="${officialName}" class="content-mainText">{officialName}</span>
+                    <br />
+                    <span th:text="${position}" class="content-smallText">{position}</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>

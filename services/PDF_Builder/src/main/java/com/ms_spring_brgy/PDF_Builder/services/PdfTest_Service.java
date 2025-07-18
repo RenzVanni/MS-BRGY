@@ -49,12 +49,15 @@ public class PdfTest_Service {
         variables.put("province", "cavite");
         variables.put("city", "dasmarinas");
         variables.put("telNo", "(046) 471-1247");
-        variables.put("name", "Jia Shie");
+        variables.put("officialName", "Jia Shie");
         variables.put("position", "punong barangay");
         variables.put("officials", List.of(
                 Map.of("name", "wonyoung", "position", "secretary"),
                 Map.of("name", "karina", "position", "treasurer")
         ));
+
+        //color
+        variables.put("color", "#cdb4db");
 
         //date
         variables.put("day", currentDay);
@@ -163,6 +166,80 @@ public class PdfTest_Service {
 
         context.setVariables(variables);
         String htmlContent = templateEngine.process("PdfType1", context);
+
+        ITextRenderer renderer = new ITextRenderer();
+        renderer.setDocumentFromString(htmlContent);
+        renderer.layout();
+        renderer.createPDF(outputStream);
+    }
+
+    //generate endorsement
+    public void endorsement(OutputStream outputStream) throws IOException {
+        Context context = new Context();
+
+        defaultData();
+
+        //html path
+        variables.put("fragmentPath", "fragments/Endorsement");
+
+        //pdf content
+        variables.put("certificate", "endorsement");
+        variables.put("toName", "yul");
+        variables.put("toPosition", "mid lane");
+        variables.put("zone", "iv");
+        variables.put("applicantName", "zed");
+        variables.put("requestorName", "janna");
+        variables.put("address", "shadow street 00x");
+        variables.put("purpose", "this is the NuN");
+
+        //pdf type
+        variables.put("forSelf", true);
+
+        ClassPathResource gradient = new ClassPathResource("/static/pdfGradient.png");
+        byte[] gradientBytes = FileCopyUtils.copyToByteArray(gradient.getInputStream());
+        String gradientBase = Base64.getEncoder().encodeToString(gradientBytes);
+        variables.put("gradient", gradientBase);
+
+
+        context.setVariables(variables);
+        String htmlContent = templateEngine.process("PdfType2", context);
+
+        ITextRenderer renderer = new ITextRenderer();
+        renderer.setDocumentFromString(htmlContent);
+        renderer.layout();
+        renderer.createPDF(outputStream);
+    }
+
+    //generate late birth registration
+    public void lateBirthRegistration(OutputStream outputStream) throws IOException {
+        Context context = new Context();
+
+        defaultData();
+
+        //html path
+        variables.put("fragmentPath", "fragments/Late_Birth_Registration");
+
+        //pdf content
+        variables.put("certificate", "certificate of late birth registration");
+        variables.put("toName", "yul");
+        variables.put("toPosition", "mid lane");
+        variables.put("zone", "iv");
+        variables.put("applicantName", "zed");
+        variables.put("requestorName", "janna");
+        variables.put("address", "shadow street 00x");
+        variables.put("purpose", "this is the NuN");
+
+        //pdf type
+        variables.put("forSelf", true);
+
+        ClassPathResource gradient = new ClassPathResource("/static/pdfGradient.png");
+        byte[] gradientBytes = FileCopyUtils.copyToByteArray(gradient.getInputStream());
+        String gradientBase = Base64.getEncoder().encodeToString(gradientBytes);
+        variables.put("gradient", gradientBase);
+
+
+        context.setVariables(variables);
+        String htmlContent = templateEngine.process("PdfType2", context);
 
         ITextRenderer renderer = new ITextRenderer();
         renderer.setDocumentFromString(htmlContent);

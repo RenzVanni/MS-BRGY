@@ -1,0 +1,67 @@
+<div th:fragment="content">
+    <p style="margin-bottom: 3px; margin: 0">City Civil Registration</p>
+    <p class="content-smallText" style="margin: 0">City of
+        <span th:text="${city}" class="content-smallText" style="text-transform: capitalize">{city}</span>,
+        <span th:text="${province}" class="content-smallText" style="text-transform: capitalize">{province}</span>
+    </p>
+
+    <br/>
+
+    <p>THIS IS TO CERTIFY THAT:</p>
+
+    <p>1.
+        <span th:text="${applicantName}" class="content-mainText">{applicantName}</span> is the child/one of the children of
+        <span th:text="${fatherName}" class="content-mainText">{fatherName}</span> and
+        <span th:text="${motherName}" class="content-mainText">{motherName}</span>, who was born on
+        <span th:text="${birthDate}" class="content-mainText">{birthDate}</span> at City of
+        <span th:text="${city}" class="content-subText">{city}</span>,
+        <span th:text="${province}" class="content-subText">{province}</span>.
+    </p>
+
+    <p>2. The birth of
+        <span th:text="${applicantName}" class="content-mainText">{applicantName}</span>, was attended by Midwife/Traditional hilot who was from Brgy. Zone
+        <span th:text="${zone}" class="content-subText">{zone}</span>, City of
+        <span th:text="${city}" class="content-subText">{city}</span>,
+        <span th:text="${province}" class="content-subText">{province}</span>.
+    </p>
+
+    <p>3. I know the date and place of birth of
+        <span th:text="${applicantName}" class="content-mainText">{applicantName}</span> as well as his/her parentage and citizenship because the spouses,
+        <span th:text="${fatherName}" class="content-mainText">{fatherName}</span> and
+        <span th:text="${motherName}" class="content-mainText">{motherName}</span> are personally known to me and permanently residents of
+        <span th:text="${address}" class="content-mainText">{address}</span>, Zone
+        <span th:text="${zone}" class="content-subText">{zone}</span>, City of
+        <span th:text="${city}" class="content-subText">{city}</span>,
+        <span th:text="${province}" class="content-subText">{province}</span>.
+    </p>
+
+    <p>This certification is being issued to the request of
+        <span th:text="${applicantName}" class="content-mainText">{applicantName}</span> in
+        order to certify the birth of his/her self and in order to give effect to the delayed
+        registration of his/her birth on the Office of City Civil Registrar of City of
+        Dasmarinas, Cavite.
+    </p>
+
+    <p style="text-indent: 28px;">Issued this
+        <span th:text="${day}" class="content-subText">{day}</span>th day of
+        <span th:text="${month}" class="content-subText">{month}</span>,
+        <span th:text="${year}" class="content-subText">{year}</span>
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="text-align: right; vertical-align: middle;">
+                <p style="text-align: left; display: inline-block;">
+                    <span th:text="${officialName}" class="content-mainText">{officialName}</span>
+                    <br/>
+                    <span th:text="${position}" class="content-smallText">{position}</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</div>
