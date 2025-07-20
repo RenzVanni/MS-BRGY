@@ -10,6 +10,7 @@
         <module name="config-server" />
         <module name="shared" />
         <module name="discovery" />
+        <module name="gateway" />
       </profile>
       <profile name="Annotation profile for residents" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -43,6 +44,7 @@
       <module name="config-server" options="-parameters" />
       <module name="disasterAndEmergency" options="-parameters" />
       <module name="discovery" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="healthAndSanitation" options="-parameters" />
       <module name="incident" options="-parameters" />
       <module name="officials" options="-parameters" />
