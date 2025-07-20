@@ -55,9 +55,7 @@
                     <br/>
                     <br/>
 
-                    <span th:text="${officialName}" class="content-mainText">{officialName}</span>
-                    <br />
-                    <span th:text="${position}" class="content-smallText">{position}</span>
+                    <span th:replace="fragments/components/Components :: certifiedBy"></span>
                 </p>
             </td>
         </tr>

@@ -22,7 +22,6 @@
     <p style="text-indent: 50px; text-transform: uppercase;">THE UNDERSIGNED INTERPOSES NO OBJECTION TO ISSUANCE OF THIS BUSINESS PERMIT PROVIDED, HOWEVER THAT THE APPLICANT SHALL ABIDE ALL PERTINENT CITY/BARANGAY ORDINANCES/RESOLUTIONS/EXECUTIVE ORDERS THAT MAY AFFECT HIS/HER BUSINESS OPERATIONS AS WELL AS THE BARANGAY WHEREIN HIS/HER ESTABLISHMENT IS LOCATED.</p>
 
     <br/>
-    <br/>
 
     <p style="text-indent: 50px;">Given this
         <span th:text="${day}" class="content-subText">{day}</span>day of
@@ -44,9 +43,7 @@
                 <p style="font-size: 12px">Approved by:</p>
                 <br/>
                 <p>
-                    <span th:text="${officialName}" class="content-mainText">{officialName}</span>
-                    <br />
-                    <span th:text="${position}">{position}</span>
+                    <span th:replace="fragments/components/Components :: certifiedBy"></span>
                 </p>
             </td>
         </tr>
@@ -58,7 +55,6 @@
 
     <span style="border-top: 1px solid black; text-align: center; padding: 10px 15px;">Applicant's Signature</span>
 
-    <br/>
     <br/>
     <br/>
     <br/>

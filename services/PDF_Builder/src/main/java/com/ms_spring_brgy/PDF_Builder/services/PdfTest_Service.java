@@ -1,5 +1,10 @@
 package com.ms_spring_brgy.PDF_Builder.services;
 
+import com.ms_spring_brgy.PDF_Builder.clients.Officials_Client;
+import com.ms_spring_brgy.PDF_Builder.clients.Residents_Client;
+import com.ms_spring_brgy.PDF_Builder.dto.Official_DTO;
+import com.ms_spring_brgy.PDF_Builder.model.Official_Model;
+import com.ms_spring_brgy.PDF_Builder.model.Resident_Model;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -16,15 +21,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PdfTest_Service {
     private final TemplateEngine templateEngine;
+    private final Officials_Client officialsClient;
+    private final Residents_Client residentsClient;
 
     Map<String, Object> variables = new HashMap<>();
 
@@ -42,6 +47,35 @@ public class PdfTest_Service {
     String imgPath2 = "https://res.cloudinary.com/dwwcralpu/image/upload/v1752694336/wonyoung_icons_xle48f.jpg";
     String imgPath3 = "https://res.cloudinary.com/dwwcralpu/image/upload/v1742754952/residents/hbfdrnnhzndmgdpnonvl.jpg";
 
+
+    //get officials
+    private List<Official_DTO> getAllOfficials() {
+        return officialsClient.getAllOfficials()
+                .stream()
+                .map(official -> {
+                    Resident_Model resident = residentsClient.findResidentById(official.getResident_id());
+                    String validateResidentMiddleName = Objects.nonNull(resident.getMiddlename()) ? " " + resident.getMiddlename() + " " : " ";
+                    String residentName = resident.getFirstname() + validateResidentMiddleName + resident.getLastname();
+                    return new Official_DTO(residentName, official.getPosition());
+                })
+                .toList();
+    }
+
+    //El kapitan
+    private Official_DTO getKapitan() {
+        Official_Model kapitan = officialsClient.getAllOfficials()
+                .stream()
+                .filter(official -> official.getPosition().equals("PUNONG_BARANGAY"))
+                .findFirst()
+                .orElse(new Official_Model());
+
+        Resident_Model resident = residentsClient.findResidentById(kapitan.getResident_id());
+        String validateResidentMiddleName = Objects.nonNull(resident.getMiddlename()) ? " " + resident.getMiddlename() + " " : " ";
+        String residentName = resident.getFirstname() + validateResidentMiddleName + resident.getLastname();
+        return new Official_DTO(residentName, kapitan.getPosition());
+
+    }
+
     //default data
     private void defaultData() {
         //brgy info
@@ -51,10 +85,8 @@ public class PdfTest_Service {
         variables.put("telNo", "(046) 471-1247");
         variables.put("officialName", "Jia Shie");
         variables.put("position", "punong barangay");
-        variables.put("officials", List.of(
-                Map.of("name", "wonyoung", "position", "secretary"),
-                Map.of("name", "karina", "position", "treasurer")
-        ));
+        variables.put("officials", getAllOfficials());
+        variables.put("kapitan", getKapitan());
 
         //color
         variables.put("color", "#cdb4db");
@@ -71,6 +103,8 @@ public class PdfTest_Service {
     //generate pdf
     public void generatePdf(OutputStream outputStream) throws IOException {
         Context context = new Context();
+
+        System.out.println("This are residents: " + residentsClient.getAllResident());
 
         defaultData();
 

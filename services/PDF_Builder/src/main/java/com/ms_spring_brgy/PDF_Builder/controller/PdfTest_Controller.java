@@ -1,5 +1,6 @@
 package com.ms_spring_brgy.PDF_Builder.controller;
 
+import com.ms_spring_brgy.PDF_Builder.clients.Officials_Client;
 import com.ms_spring_brgy.PDF_Builder.services.PdfTest_Service;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
