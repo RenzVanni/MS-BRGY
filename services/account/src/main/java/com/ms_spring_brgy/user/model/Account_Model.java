@@ -15,10 +15,7 @@ public class Account_Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
-    private String firstname;
-
-    private String lastname;
+    private String email;
 
     @Column(unique = true)
     private String username;

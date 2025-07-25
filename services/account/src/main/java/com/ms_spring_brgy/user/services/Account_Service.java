@@ -32,8 +32,7 @@ public class Account_Service {
     public Account_Model patchUpdateAccount(Account_Model body) {
         Account_Model exist = crudService.customFindById(body.getId());
 
-        Service_Component.updateService(exist.getLastname(), body.getLastname(), exist::setLastname);
-        Service_Component.updateService(exist.getFirstname(), body.getFirstname(), exist::setFirstname);
+        Service_Component.updateService(exist.getEmail(), body.getEmail(), exist::setEmail);
         Service_Component.updateService(exist.getUsername(), body.getUsername(), exist::setUsername);
         Service_Component.updateService(exist.getPassword(), body.getPassword(), exist::setPassword);
         Service_Component.updateService(exist.getResident_id(), body.getResident_id(), exist::setResident_id);

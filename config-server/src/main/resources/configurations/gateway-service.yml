@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+          routes:
+            - id: account-service
+              uri: lb:http://account-service
+              predicates:
+                - Path=/api/v1/accounts/**
+            - id: residents-service
+              uri: lb:http://residents-service
+              predicates:
+                - Path=/api/v1/residents/**
+            - id: officials-service
+              uri: lb:http://officials-service
+              predicates:
+                - Path=/api/v1/officials/**
+server:
+  port: 8222

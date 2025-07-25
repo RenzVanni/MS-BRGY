@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${jwt.auth.issuerPath}
+          jwk-set-uri: ${jwt.auth.issuerPath}/protocol/openid-connect/certs
   datasource:
     url: jdbc:postgresql://localhost:5401/account
     username: brgy
@@ -10,5 +16,11 @@ spring:
     init:
       mode: always
 
+jwt:
+  auth:
+    issuerPath: http://localhost:8080/realms/auth
+    client-id: authId
+    principle-attribute: preferred_username
+    realm-name: auth
 server:
   port: 7001
