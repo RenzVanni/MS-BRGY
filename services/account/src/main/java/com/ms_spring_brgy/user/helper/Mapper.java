@@ -1,22 +1,52 @@
 package com.ms_spring_brgy.user.helper;
 
 import com.ms_spring_brgy.user.dto.Auth_Response_DTO;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.keycloak.admin.client.resource.RealmResource;
+import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
+
+@Component
 public class Mapper {
-    public static List<Auth_Response_DTO> authResponseMapper(List<UserRepresentation> body) {
+    @Value("${jwt.auth.resident-id}")
+    private String residentId;
+
+    public List<Auth_Response_DTO> authResponseMapper(List<UserRepresentation> body, RealmResource keycloak, String clientUUID) {
         return body
                 .stream()
                 .map(auth -> {
                     Map<String, List<String>> getAttribute = auth.getAttributes();
-                    String attribute = null;
+                    Long resident_id = null;
 
-                    if(getAttribute != null && !getAttribute.get("resident_id").isEmpty()) {
-                        attribute = getAttribute.get("resident_id").get(0);
+                    //verify if attribute is not null and attribute named resident_id is not empty
+                    //then assign the attribute
+                    if(getAttribute != null && !getAttribute.get(residentId).isEmpty()) {
+                        String attribute = getAttribute.get(residentId).get(0);
+
+                        //convert string to Long
+                        resident_id = Long.valueOf(attribute);
                     }
+
+                    //fetch roles
+                    List<RoleRepresentation> roleRepresentations = keycloak
+                            .users()
+                            .get(auth.getId())
+                            .roles()
+                            .clientLevel(clientUUID)
+                            .listEffective();
+
+                    //map roles and fetch only the name
+                    List<String> roles = roleRepresentations
+                            .stream()
+                            .map(RoleRepresentation::getName)
+                            .toList();
 
                     String email = null;
                     if(!auth.getEmail().isEmpty()) {
@@ -26,7 +56,8 @@ public class Mapper {
                         .id(auth.getId())
                         .username(auth.getUsername())
                         .email(email)
-                        .resident_id(attribute)
+                        .resident_id(resident_id)
+                        .role(roles)
                         .build();
                 })
                 .toList();

@@ -1,12 +1,16 @@
 package com.ms_spring_brgy.user.dto;
 
 import lombok.Builder;
+import org.keycloak.representations.idm.RoleRepresentation;
+
+import java.util.List;
 
 @Builder
 public record Auth_Response_DTO(
         String id,
         String username,
         String email,
-        String resident_id
+        Long resident_id,
+        List<String> role
 ) {
 }

@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${jwt.auth.issuerPath}
+          jwk-set-uri: ${jwt.auth.issuerPath}/protocol/openid-connect/certs
   cloud:
     gateway:
       server:
@@ -21,3 +27,15 @@ spring:
                 - Path=/api/v1/officials/**
 server:
   port: 8222
+
+jwt:
+  auth:
+    issuerPath: http://localhost:8080/realms/auth
+    client-id: authId
+    principle-attribute: preferred_username
+
+logging:
+  level:
+    org:
+      springframework:
+        security=DEBUG:

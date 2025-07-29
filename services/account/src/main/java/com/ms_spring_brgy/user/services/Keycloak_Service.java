@@ -3,23 +3,33 @@ package com.ms_spring_brgy.user.services;
 import com.ms_spring_brgy.user.constants.UserData;
 import com.ms_spring_brgy.user.dto.Auth_Response_DTO;
 import com.ms_spring_brgy.user.helper.Mapper;
+import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
+import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
+import org.keycloak.admin.client.resource.RealmResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
+import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class Keycloak_Service {
-//    private final Mapper mapper;
-    String realm = "auth";
+    private final Mapper mapper;
 
-//    @Value("${jwt.auth.realm-name}")
-//    String envRealm;
+    @Value("${jwt.auth.client-id}")
+    String clientId;
+
+    @Value("${jwt.auth.realm-name}")
+    String realmName;
+
+    @Value("${jwt.auth.resident-id}")
+    private String residentId;
 
     Keycloak keycloak = Keycloak.getInstance(
             "http://localhost:8080",
@@ -29,14 +39,27 @@ public class Keycloak_Service {
             "admin-cli"
     );
 
+    //fetch keycloak realm
+    private RealmResource realmResource() {
+        return keycloak.realm(realmName);
+    }
+
+    //fetch client UUID
+    private String fetchClientUUID() {
+        return realmResource()
+                .clients()
+                .findByClientId(clientId)
+                .get(0)
+                .getId();
+    }
+
     //fetch all users
     public List<Auth_Response_DTO> getUsers() {
-        List<UserRepresentation> userRepresentation = keycloak
-                .realm(realm)
+        List<UserRepresentation> userRepresentation = realmResource()
                 .users()
                 .list();
 
-        return Mapper.authResponseMapper(userRepresentation);
+        return mapper.authResponseMapper(userRepresentation, realmResource(), fetchClientUUID());
     }
 
     //create user
@@ -44,13 +67,14 @@ public class Keycloak_Service {
         Map<String, List<String>> attribute = new HashMap<>();
         attribute.put("resident_id", List.of(body.getResidentId().toString()));
 
-        //create a user
+        //create user
         UserRepresentation user = new UserRepresentation();
         user.setUsername(body.getUsername());
         user.setEnabled(true);
         user.setEmail(body.getEmail());
         user.setAttributes(attribute);
 
+        //create password
         CredentialRepresentation credential = new CredentialRepresentation();
         credential.setTemporary(false);
         credential.setType(CredentialRepresentation.PASSWORD);
@@ -65,9 +89,68 @@ public class Keycloak_Service {
 
         //send request
         try {
-            keycloak.realm(realm).users().create(user);
+
+            //convert Long resident id to String
+            String convertResidentId = String.valueOf(body.getResidentId());
+
+            //fetch all users
+            List<UserRepresentation> fetchUsers = realmResource()
+                    .users()
+                    .list();
+
+            //map all users to verify if resident id already existed
+            //if existed throw an error
+            for (UserRepresentation existingUser : fetchUsers) {
+                Map<String, List<String>> existingAttribute = existingUser.getAttributes();
+                if(existingAttribute.get(residentId).contains(convertResidentId)){
+                    throw new RuntimeException("Resident ID already exists!");
+                }
+            }
+
+            //create user
+            Response response = realmResource()
+                    .users()
+                    .create(user);
+
+            //throw error if user already exist
+            if(response.getStatus() == 409) {
+                throw new RuntimeException("User already exist");
+            }
+
+            //fetch user id
+            String userId = CreatedResponseUtil.getCreatedId(response);
+
+            //fetch role in client
+            RoleRepresentation role = realmResource()
+                    .clients()
+                    .get(fetchClientUUID())
+                    .roles()
+                    .get(body.getRole())
+                    .toRepresentation();
+
+            //assign role to user
+            realmResource()
+                    .users()
+                    .get(userId)
+                    .roles()
+                    .clientLevel(fetchClientUUID())
+                    .add(Collections.singletonList(role));
+
+
+            //client role list
+            List<RoleRepresentation> clientRoles = realmResource()
+                    .clients()
+                    .get(fetchClientUUID())
+                    .roles()
+                    .list();
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    //fetch all roles
+    public void fetchAllRoles() {
+        realmResource().roles().list();
     }
 }

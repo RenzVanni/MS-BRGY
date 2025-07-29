@@ -1,7 +1,6 @@
-package com.ms_spring_brgy.user.services;
+package com.ms_spring_brgy.gateway.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,24 +9,24 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
-    @Value("${jwt.auth.client-id}")
-    private String clientId;
+//    @Value("${jwt.auth.client-id}")
+//    String clientId = "authId";
 
-    @Value("${jwt.auth.principle-attribute}")
-    private String principleAttribute;
+//    @Value("${jwt.auth.principle-attribute}")
+//    private String principleAttribute = "preferred_username";
 
     @Override
     public AbstractAuthenticationToken convert(Jwt source) {
@@ -43,23 +42,21 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
     }
 
     private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt source) {
-        Map<String, Object> resourceAccess;
-        Map<String, Object> resource;
-        Collection<String> resourceRole;
+        Map<String, Object> resourceAccess = source.getClaim("resource_access");
+        Map<String, Object> resource = Map.of();
+        Collection<String> resourceRole = Set.of();
+        String clientId = "authId";
 
-        if(source.getClaim("resource_access") == null) {
-            return Set.of();
+        if(Objects.nonNull(resourceAccess)) {
+            resource = (Map<String, Object>) resourceAccess.get(clientId);
+            if(Objects.nonNull(resource) && Objects.nonNull(resource.get("roles"))) {
+                resourceRole = (Collection<String>) resource.get("roles");
+            } else {
+                throw new NullPointerException("Empty Resource!");
+            }
+        }else {
+            throw new NullPointerException("No Resource Access!");
         }
-
-        resourceAccess = source.getClaim("resource_access");
-
-        if(resourceAccess.get(clientId) == null) {
-            return Set.of();
-        }
-
-        resource = (Map<String, Object>) resourceAccess.get(clientId);
-
-        resourceRole = (Collection<String>) resource.get("roles");
 
         return resourceRole
                 .stream()

@@ -11,4 +11,5 @@ public class UserData {
     String password;
     String confirmPassword;
     Long residentId;
+    String role;
 }

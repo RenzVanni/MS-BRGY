@@ -21,15 +21,15 @@ public class Account_Controller {
     private final Account_Service service;
     private final Keycloak_Service keycloakService;
 
-    //create user in keycloak - TRIAL
-    @PostMapping("/auth/register")
+    //register user in keycloak
+    @PostMapping("/register")
     public ResponseEntity<UserRepresentation> createUserInKeycloak(@RequestBody UserData body) {
         keycloakService.createUser(body);
         return ResponseEntity.ok().build();
     }
 
-    //fetch all users
-    @GetMapping("/auth/users")
+    //fetch all users in keycloak
+    @GetMapping("/users")
     public ResponseEntity<List<Auth_Response_DTO>> getKeycloakUser() {
         List<Auth_Response_DTO> body = keycloakService.getUsers();
         return ResponseEntity.ok(body);
