@@ -31,6 +31,7 @@ public class PdfTest_Service {
     private final Officials_Client officialsClient;
     private final Residents_Client residentsClient;
 
+    //create variables this will contain the data that will be use in html
     Map<String, Object> variables = new HashMap<>();
 
     LocalDate today = LocalDate.now();

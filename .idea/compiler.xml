@@ -12,7 +12,7 @@
         <module name="discovery" />
         <module name="gateway" />
       </profile>
-      <profile name="Annotation profile for account" enabled="true">
+      <profile name="Annotation profile for payment" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -24,6 +24,7 @@
         <module name="complaint" />
         <module name="officials" />
         <module name="residents" />
+        <module name="payment" />
         <module name="healthAndSanitation" />
         <module name="incident" />
         <module name="disasterAndEmergency" />
@@ -48,6 +49,7 @@
       <module name="healthAndSanitation" options="-parameters" />
       <module name="incident" options="-parameters" />
       <module name="officials" options="-parameters" />
+      <module name="payment" options="-parameters" />
       <module name="reports" options="-parameters" />
       <module name="residents" options="-parameters" />
     </option>

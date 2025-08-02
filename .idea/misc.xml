@@ -21,6 +21,7 @@
         <option value="$PROJECT_DIR$/services/reports/incident/pom.xml" />
         <option value="$PROJECT_DIR$/services/PDF_Builder/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/services/payment/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
