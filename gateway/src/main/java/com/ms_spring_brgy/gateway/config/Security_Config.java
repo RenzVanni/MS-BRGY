@@ -1,7 +1,12 @@
 package com.ms_spring_brgy.gateway.config;
 
+import com.ms_spring_brgy.gateway.enums.Paths;
+import com.ms_spring_brgy.gateway.enums.Routes;
+import com.ms_spring_brgy.gateway.enums.URI;
 import com.ms_spring_brgy.gateway.service.JwtAuthConverter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -42,5 +47,43 @@ public class Security_Config {
                                 .jwtAuthenticationConverter(new ReactiveJwtAuthenticationConverterAdapter(jwtAuthConverter))));
 
         return http.build();
+    }
+
+    @Bean
+    public RouteLocator routeLocator(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route(Routes.ACCOUNT.getLabel(), r -> r
+                        .path(Paths.ACCOUNT.getLabel())
+                        .uri(URI.ACCOUNT.getLabel())
+                )
+                .route(Routes.RESIDENTS.getLabel(), r -> r
+                        .path(Paths.RESIDENTS.getLabel())
+                        .uri(URI.RESIDENTS.getLabel())
+                )
+                .route(Routes.OFFICIALS.getLabel(), r -> r
+                        .path(Paths.OFFICIALS.getLabel())
+                        .uri(URI.OFFICIALS.getLabel())
+                )
+                .route(Routes.BLOTTER.getLabel(), r -> r
+                        .path(Paths.BLOTTER.getLabel())
+                        .uri(URI.BLOTTER.getLabel())
+                )
+                .route(Routes.COMPLAINT.getLabel(), r -> r
+                        .path(Paths.COMPLAINT.getLabel())
+                        .uri(URI.COMPLAINT.getLabel())
+                )
+                .route(Routes.DAE.getLabel(), r -> r
+                        .path(Paths.DAE.getLabel())
+                        .uri(URI.DAE.getLabel())
+                )
+                .route(Routes.HAS.getLabel(), r -> r
+                        .path(Paths.HAS.getLabel())
+                        .uri(URI.HAS.getLabel())
+                )
+                .route(Routes.INCIDENT.getLabel(), r -> r
+                        .path(Paths.INCIDENT.getLabel())
+                        .uri(URI.INCIDENT.getLabel())
+                )
+                .build();
     }
 }

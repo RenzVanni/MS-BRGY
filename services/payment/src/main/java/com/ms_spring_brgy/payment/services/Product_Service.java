@@ -17,7 +17,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -28,8 +30,9 @@ public class Product_Service {
     String STRIPE_SECRET_KEY;
 
     //create product method
-    public String createProduct(Product_Request_DTO body) throws StripeException {
+    public Map<String, String> createProduct(Product_Request_DTO body) throws StripeException {
         Stripe.apiKey = STRIPE_SECRET_KEY;
+        Long computedUnitAmount = body.price() * 100L;
 
         //create product params
         ProductCreateParams productCreateParams = ProductCreateParams
@@ -47,13 +50,17 @@ public class Product_Service {
                 .builder()
                 .setProduct(product.getId())
                 .setCurrency("php")
-                .setUnitAmount(1200L)
+                .setUnitAmount(computedUnitAmount)
                 .build();
 
         //create price
         Price price = Price.create(priceCreateParams);
 
-        return "Product Successfully created ID:: " + product.getId();
+        //set return message
+        Map<String, String> message = new HashMap<>();
+        message.put("message", "Product Successfully created ID:: " + product.getId());
+
+        return message;
     }
 
     //fetch products method
@@ -73,11 +80,14 @@ public class Product_Service {
                 .build();
 
         //fetch products
-        ProductCollection productCollection =  Product.list(productListParams);
+        ProductCollection productCollection =  Product
+                .list(productListParams);
 
         //fetch prices
-        PriceCollection priceCollection = Price.list(priceListParams);
+        PriceCollection priceCollection = Price
+                .list(priceListParams);
 
-        return mapper.productResponse(productCollection, priceCollection);
+        return mapper
+                .productResponse(productCollection, priceCollection);
     }
 }

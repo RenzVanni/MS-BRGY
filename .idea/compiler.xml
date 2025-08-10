@@ -19,6 +19,7 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
+        <module name="notification" />
         <module name="blotter" />
         <module name="PDF_Builder" />
         <module name="complaint" />
@@ -48,6 +49,7 @@
       <module name="gateway" options="-parameters" />
       <module name="healthAndSanitation" options="-parameters" />
       <module name="incident" options="-parameters" />
+      <module name="notification" options="-parameters" />
       <module name="officials" options="-parameters" />
       <module name="payment" options="-parameters" />
       <module name="reports" options="-parameters" />

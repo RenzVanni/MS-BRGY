@@ -31,8 +31,8 @@ public class Product_Controller {
 
     //create product
     @PostMapping
-    public ResponseEntity<String> createProduct(@RequestBody Product_Request_DTO body) throws StripeException {
-        String response = service.createProduct(body);
+    public ResponseEntity<Map<String, String>> createProduct(@RequestBody Product_Request_DTO body) throws StripeException {
+        Map<String, String> response = service.createProduct(body);
         return ResponseEntity.ok(response);
     }
 

@@ -11,20 +11,24 @@ spring:
         webflux:
           discovery:
             locator:
-              enabled: true
-          routes:
-            - id: account-service
-              uri: lb:http://account-service
-              predicates:
-                - Path=/api/v1/accounts/**
-            - id: residents-service
-              uri: lb:http://residents-service
-              predicates:
-                - Path=/api/v1/residents/**
-            - id: officials-service
-              uri: lb:http://officials-service
-              predicates:
-                - Path=/api/v1/officials/**
+              enabled: false
+#          routes:
+#            - id: ${routes.account}-service
+#              uri: lb:http://${routes.account}-service
+#              predicates:
+#                - Path=${version.api}/${routes.account}/**
+#            - id: ${routes.residents}-service
+#              uri: lb:http://${routes.residents}-service
+#              predicates:
+#                - Path=${version.api}/residents/**
+#            - id: officials-service
+#              uri: lb:http://officials-service
+#              predicates:
+#                - Path=${version.api}/officials/**
+#            - id: blotter-service
+#              uri: lb:http://blotter-service
+#              predicates:
+#                - Path=${version.api}/blotter/**
 server:
   port: 8222
 
@@ -34,8 +38,13 @@ jwt:
     client-id: authId
     principle-attribute: preferred_username
 
-logging:
-  level:
-    org:
-      springframework:
-        security=DEBUG:
+version:
+  api: /api/v1
+
+routes:
+  account: account
+  residents: residents
+  officials: officials
+  blotter: blotter
+
+

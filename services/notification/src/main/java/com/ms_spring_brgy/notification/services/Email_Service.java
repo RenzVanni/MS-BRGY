@@ -1,0 +1,36 @@
+package com.ms_spring_brgy.notification.services;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import lombok.RequiredArgsConstructor;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
+
+@Service
+@RequiredArgsConstructor
+public class Email_Service {
+    private final JavaMailSender javaMailSender;
+    private final TemplateEngine templateEngine;
+
+    public void sendEmail() throws MessagingException {
+        //create thymeleaf context this will contain the variable that will be use in html
+        Context context = new Context();
+        context.setVariable("name", "jia");
+
+        //process the html template
+        String htmlContent = templateEngine.process("email-template", context);
+
+        //send email
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+        helper.setTo("renzvanni.dev@gmail.com");
+        helper.setSubject("Notification from brgy api");
+        helper.setText(htmlContent, true);
+        helper.setFrom("renzvanni626@gmail.com");
+
+        javaMailSender.send(message);
+    }
+}
