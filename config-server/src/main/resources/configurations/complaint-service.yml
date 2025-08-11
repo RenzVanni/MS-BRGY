@@ -13,4 +13,4 @@ spring:
     baseline-version : 0
 
 server:
-  port: 7102
+  port: ${ports.complaint}

@@ -1,5 +1,5 @@
 server:
-  port: 7004
+  port: ${ports.payment}
 
 stripe:
   secret-key: ${STRIPE_SECRET_KEY}

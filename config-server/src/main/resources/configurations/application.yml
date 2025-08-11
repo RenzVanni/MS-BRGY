@@ -8,3 +8,20 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+ports:
+  account: 7001
+  officials: 7002
+  residents: 7003
+  payment: 7004
+  notification: 7005
+  pdfBuilder: 9000
+
+  blotter: 7101
+  complaint: 7102
+  dae: 7103
+  has: 7104
+  incident: 7105
+
+  discovery: 8761
+  gateway: 8222
