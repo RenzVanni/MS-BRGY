@@ -30,7 +30,7 @@ spring:
 #              predicates:
 #                - Path=${version.api}/blotter/**
 server:
-  port: 8222
+  port: ${ports.gateway}
 
 jwt:
   auth:

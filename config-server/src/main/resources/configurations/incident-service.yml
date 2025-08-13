@@ -13,4 +13,4 @@ spring:
     baseline-version : 0
 
 server:
-  port: 7105
+  port: ${ports.incident}

@@ -24,4 +24,4 @@ jwt:
     realm-name: ${REALM_NAME:auth}
     resident-id: resident_id
 server:
-  port: 7001
+  port: ${ports.account}

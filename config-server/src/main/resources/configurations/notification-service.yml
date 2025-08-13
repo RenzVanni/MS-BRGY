@@ -10,3 +10,6 @@ spring:
           auth: true
           starttls:
             enable: true
+
+server:
+  port: ${ports.notification}
