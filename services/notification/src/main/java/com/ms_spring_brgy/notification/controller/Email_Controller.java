@@ -15,8 +15,10 @@ public class Email_Controller {
     private final Email_Service service;
 
     @GetMapping
-    public ResponseEntity<String> sendEmail() throws MessagingException {
+    public ResponseEntity<String> sendEmail() throws MessagingException, InterruptedException {
         service.sendEmail();
+        System.out.println("First Message 001");
+
         return ResponseEntity.ok("Email Send");
     }
 }
