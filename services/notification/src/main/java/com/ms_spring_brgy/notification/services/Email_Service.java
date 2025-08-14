@@ -5,6 +5,7 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -15,7 +16,8 @@ public class Email_Service {
     private final JavaMailSender javaMailSender;
     private final TemplateEngine templateEngine;
 
-    public void sendEmail() throws MessagingException {
+    @Async
+    public void sendEmail() throws MessagingException, InterruptedException {
         //create thymeleaf context this will contain the variable that will be use in html
         Context context = new Context();
         context.setVariable("name", "jia");
@@ -32,5 +34,8 @@ public class Email_Service {
         helper.setFrom("renzvanni626@gmail.com");
 
         javaMailSender.send(message);
+
+        Thread.sleep(5000L);
+        System.out.println("Second Message 002");
     }
 }
