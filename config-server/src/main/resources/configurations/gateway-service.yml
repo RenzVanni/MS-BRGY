@@ -34,7 +34,7 @@ server:
 
 jwt:
   auth:
-    issuerPath: http://localhost:8080/realms/auth
+    issuerPath: http://localhost:8080/realms/master
     client-id: authId
     principle-attribute: preferred_username
 

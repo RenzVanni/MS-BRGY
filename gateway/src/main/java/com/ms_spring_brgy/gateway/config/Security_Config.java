@@ -3,6 +3,8 @@ package com.ms_spring_brgy.gateway.config;
 import com.ms_spring_brgy.gateway.enums.Paths;
 import com.ms_spring_brgy.gateway.enums.Routes;
 import com.ms_spring_brgy.gateway.enums.URI;
+import com.ms_spring_brgy.gateway.service.ClearExpiredCookie;
+import com.ms_spring_brgy.gateway.service.CookieConverter;
 import com.ms_spring_brgy.gateway.service.JwtAuthConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -29,22 +31,25 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class Security_Config {
     private final JwtAuthConverter jwtAuthConverter;
+    private final ClearExpiredCookie cLearExpiredCookie;
 
     @Bean
     public SecurityWebFilterChain securityFilterChain(ServerHttpSecurity http)  {
         http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(customizer -> customizer
-                        .pathMatchers("/api/v1/accounts/users")
-                        .authenticated()
-                        .pathMatchers("/api/v1/accounts/**")
-                        .permitAll()
+                        .pathMatchers("/api/v1/accounts/login").permitAll()
+//                        .pathMatchers("/api/v1/accounts/**").authenticated()
+                        .anyExchange().authenticated()
                 );
 
         http
                 .oauth2ResourceServer(customizer -> customizer
+                        .bearerTokenConverter(new CookieConverter())
                         .jwt(jwtConfigurer -> jwtConfigurer
-                                .jwtAuthenticationConverter(new ReactiveJwtAuthenticationConverterAdapter(jwtAuthConverter))));
+                                .jwtAuthenticationConverter(new ReactiveJwtAuthenticationConverterAdapter(jwtAuthConverter)))
+                        .authenticationEntryPoint(cLearExpiredCookie));
+
 
         return http.build();
     }

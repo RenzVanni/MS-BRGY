@@ -1,7 +1,7 @@
 package com.ms_spring_brgy.gateway.enums;
 
 public enum Paths {
-    ACCOUNT("/api/v1/account/**"),
+    ACCOUNT("/api/v1/accounts/**"),
     RESIDENTS("/api/v1/residents/**"),
     OFFICIALS("/api/v1/officials/**"),
     BLOTTER("/api/v1/blotter/**"),

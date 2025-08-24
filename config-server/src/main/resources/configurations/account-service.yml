@@ -18,10 +18,11 @@ spring:
 
 jwt:
   auth:
-    issuerPath: http://localhost:8080/realms/auth
+    issuerPath: http://localhost:8080/realms/master
     client-id: authId
+    client-secret: kJ52RGMkRz0P2h4oH47YWGRz9udZiXK2
     principle-attribute: preferred_username
-    realm-name: ${REALM_NAME:auth}
+    realm-name: master
     resident-id: resident_id
 server:
   port: ${ports.account}

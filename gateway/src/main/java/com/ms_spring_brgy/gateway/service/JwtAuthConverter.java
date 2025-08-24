@@ -1,6 +1,7 @@
 package com.ms_spring_brgy.gateway.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,11 +23,11 @@ import java.util.stream.Stream;
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
-//    @Value("${jwt.auth.client-id}")
-//    String clientId = "authId";
+    @Value("${jwt.auth.client-id}")
+    String clientId;
 
-//    @Value("${jwt.auth.principle-attribute}")
-//    private String principleAttribute = "preferred_username";
+    @Value("${jwt.auth.principle-attribute}")
+    String principleAttribute;
 
     @Override
     public AbstractAuthenticationToken convert(Jwt source) {
@@ -45,7 +46,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
         Map<String, Object> resourceAccess = source.getClaim("resource_access");
         Map<String, Object> resource = Map.of();
         Collection<String> resourceRole = Set.of();
-        String clientId = "authId";
+//        String clientId = "authId";
 
         if(Objects.nonNull(resourceAccess)) {
             resource = (Map<String, Object>) resourceAccess.get(clientId);

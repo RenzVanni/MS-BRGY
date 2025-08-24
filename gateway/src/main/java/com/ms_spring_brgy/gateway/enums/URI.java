@@ -1,14 +1,14 @@
 package com.ms_spring_brgy.gateway.enums;
 
 public enum URI {
-    ACCOUNT("lb:http://" + Routes.ACCOUNT),
-    RESIDENTS("lb:http://" + Routes.RESIDENTS),
-    OFFICIALS("lb:http://" + Routes.OFFICIALS),
-    BLOTTER("lb:http://" + Routes.BLOTTER),
-    COMPLAINT("lb:http://" + Routes.COMPLAINT),
-    DAE("lb:http://" + Routes.DAE),
-    HAS("lb:http://" + Routes.HAS),
-    INCIDENT("lb:http://" + Routes.INCIDENT);
+    ACCOUNT("lb:http://" + Routes.ACCOUNT.getLabel()),
+    RESIDENTS("lb:http://" + Routes.RESIDENTS.getLabel()),
+    OFFICIALS("lb:http://" + Routes.OFFICIALS.getLabel()),
+    BLOTTER("lb:http://" + Routes.BLOTTER.getLabel()),
+    COMPLAINT("lb:http://" + Routes.COMPLAINT.getLabel()),
+    DAE("lb:http://" + Routes.DAE.getLabel()),
+    HAS("lb:http://" + Routes.HAS.getLabel()),
+    INCIDENT("lb:http://" + Routes.INCIDENT.getLabel());
 
     private final String label;
 
