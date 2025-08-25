@@ -35,7 +35,7 @@ services:
     command:
       - "start-dev"
     volumes:
-      - keycloak-data:/keycloak/data
+      - keycloak-data:/opt/keycloak/data
 
   postgres_residents:
     container_name: residentsdb

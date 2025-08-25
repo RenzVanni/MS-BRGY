@@ -20,7 +20,7 @@ jwt:
   auth:
     issuerPath: http://localhost:8080/realms/master
     client-id: authId
-    client-secret: kJ52RGMkRz0P2h4oH47YWGRz9udZiXK2
+    client-secret: xH0vcy86wsqarq0TTXKrm98p9JsIOSJs
     principle-attribute: preferred_username
     realm-name: master
     resident-id: resident_id
