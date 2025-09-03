@@ -1,0 +1,126 @@
+services:
+  - type: web
+    name: config-server
+    runtime: docker
+    dockerfilePath: ./config-server/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8888
+
+  - type: web
+    name: discovery
+    runtime: docker
+    dockerfilePath: ./config-discovery/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8761
+
+  - type: web
+    name: gateway
+    runtime: docker
+    dockerfilePath: ./gateway/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8222
+
+  - type: web
+    name: account
+    runtime: docker
+    dockerfilePath: ./services/account/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7001
+
+  - type: web
+    name: notification
+    runtime: docker
+    dockerfilePath: ./services/notification/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7005
+
+  - type: web
+    name: officials
+    runtime: docker
+    dockerfilePath: ./services/officials/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7002
+
+  - type: web
+    name: payment
+    runtime: docker
+    dockerfilePath: ./services/payment/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7004
+
+  - type: web
+    name: pdfBuilder
+    runtime: docker
+    dockerfilePath: ./services/PDF_Builder/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 9000
+
+  - type: web
+    name: blotter
+    runtime: docker
+    dockerfilePath: ./services/reports/blotter/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7101
+
+  - type: web
+    name: complaint
+    runtime: docker
+    dockerfilePath: ./services/reports/complaint/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7102
+
+  - type: web
+    name: disasterAndEmergency
+    runtime: docker
+    dockerfilePath: ./services/reports/disasterAndEmergency/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7103
+
+  - type: web
+    name: healthAndSanitation
+    runtime: docker
+    dockerfilePath: ./services/reports/healthAndSanitation/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7104
+
+  - type: web
+    name: incident
+    runtime: docker
+    dockerfilePath: ./services/reports/incident/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7105
+
+  - type: web
+    name: residents
+    runtime: docker
+    dockerfilePath: ./services/residents/Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 7003
