@@ -2,6 +2,7 @@ services:
   - type: web
     name: config-server
     runtime: docker
+    rootDir: ./config-server
     dockerfilePath: ./config-server/Dockerfile
     plan: free
     envVars:
@@ -11,7 +12,8 @@ services:
   - type: web
     name: discovery
     runtime: docker
-    dockerfilePath: ./config-discovery/Dockerfile
+    rootDir: ./discovery
+    dockerfilePath: ./discovery/Dockerfile
     plan: free
     envVars:
       - key: PORT
@@ -20,6 +22,7 @@ services:
   - type: web
     name: gateway
     runtime: docker
+    rootDir: ./gateway
     dockerfilePath: ./gateway/Dockerfile
     plan: free
     envVars:
@@ -29,6 +32,7 @@ services:
   - type: web
     name: account
     runtime: docker
+    rootDir: ./services/account
     dockerfilePath: ./services/account/Dockerfile
     plan: free
     envVars:
@@ -38,6 +42,7 @@ services:
   - type: web
     name: notification
     runtime: docker
+    rootDir: ./services/notification
     dockerfilePath: ./services/notification/Dockerfile
     plan: free
     envVars:
@@ -47,6 +52,7 @@ services:
   - type: web
     name: officials
     runtime: docker
+    rootDir: ./services/officials
     dockerfilePath: ./services/officials/Dockerfile
     plan: free
     envVars:
@@ -56,6 +62,7 @@ services:
   - type: web
     name: payment
     runtime: docker
+    rootDir: ./services/payment
     dockerfilePath: ./services/payment/Dockerfile
     plan: free
     envVars:
@@ -65,6 +72,7 @@ services:
   - type: web
     name: pdfBuilder
     runtime: docker
+    rootDir: ./services/PDF_Builder
     dockerfilePath: ./services/PDF_Builder/Dockerfile
     plan: free
     envVars:
@@ -74,6 +82,7 @@ services:
   - type: web
     name: blotter
     runtime: docker
+    rootDir: ./services/reports/blotter
     dockerfilePath: ./services/reports/blotter/Dockerfile
     plan: free
     envVars:
@@ -83,6 +92,7 @@ services:
   - type: web
     name: complaint
     runtime: docker
+    rootDir: ./services/reports/complaint
     dockerfilePath: ./services/reports/complaint/Dockerfile
     plan: free
     envVars:
@@ -92,6 +102,7 @@ services:
   - type: web
     name: disasterAndEmergency
     runtime: docker
+    rootDir: ./services/reports/disasterAndEmergency
     dockerfilePath: ./services/reports/disasterAndEmergency/Dockerfile
     plan: free
     envVars:
@@ -101,6 +112,7 @@ services:
   - type: web
     name: healthAndSanitation
     runtime: docker
+    rootDir: ./services/reports/healthAndSanitation
     dockerfilePath: ./services/reports/healthAndSanitation/Dockerfile
     plan: free
     envVars:
@@ -110,6 +122,7 @@ services:
   - type: web
     name: incident
     runtime: docker
+    rootDir: ./services/reports/incident
     dockerfilePath: ./services/reports/incident/Dockerfile
     plan: free
     envVars:
@@ -119,6 +132,7 @@ services:
   - type: web
     name: residents
     runtime: docker
+    rootDir: ./services/residents
     dockerfilePath: ./services/residents/Dockerfile
     plan: free
     envVars:
