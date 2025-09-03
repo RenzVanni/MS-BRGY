@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 @Component
@@ -27,7 +28,7 @@ public class Mapper {
 
                     //verify if attribute is not null and attribute named resident_id is not empty
                     //then assign the attribute
-                    if(getAttribute != null && !getAttribute.get(residentId).isEmpty()) {
+                    if(getAttribute != null && Objects.nonNull(getAttribute.get(residentId))) {
                         String attribute = getAttribute.get(residentId).get(0);
 
                         //convert string to Long
@@ -49,7 +50,7 @@ public class Mapper {
                             .toList();
 
                     String email = null;
-                    if(!auth.getEmail().isEmpty()) {
+                    if(Objects.nonNull(auth.getEmail())) {
                         email = auth.getEmail();
                     }
                     return Auth_Response_DTO.builder()

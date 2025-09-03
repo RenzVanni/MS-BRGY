@@ -44,10 +44,11 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
 
     private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt source) {
         Map<String, Object> resourceAccess = source.getClaim("resource_access");
+        Map<String, Object> realmAccess = source.getClaim("realm_access");
         Map<String, Object> resource = Map.of();
         Collection<String> resourceRole = Set.of();
-//        String clientId = "authId";
 
+        //check if user role exists and assign it
         if(Objects.nonNull(resourceAccess)) {
             resource = (Map<String, Object>) resourceAccess.get(clientId);
             if(Objects.nonNull(resource) && Objects.nonNull(resource.get("roles"))) {

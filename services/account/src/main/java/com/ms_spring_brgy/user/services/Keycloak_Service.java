@@ -73,11 +73,7 @@ public class Keycloak_Service {
 
         ResponseEntity<Map> response = restTemplate.postForEntity(tokenUrl, request, Map.class);
 
-//        try {
             return response.getBody().get("access_token").toString();
-//        } catch (NullPointerException e) {
-//            throw new NullPointerException("Empty Token");
-//        }
     }
 
     //fetch keycloak realm

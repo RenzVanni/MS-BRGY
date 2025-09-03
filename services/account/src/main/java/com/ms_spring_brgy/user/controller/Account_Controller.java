@@ -93,8 +93,8 @@ public class Account_Controller {
 
     //find all accounts
     @GetMapping
-    public ResponseEntity<List<Account_Model>> findAllAccount() {
-        return Rest_Component.RestFindAll(service::findAllAccount);
+    public ResponseEntity<List<Auth_Response_DTO>> findAllAccount() {
+        return Rest_Component.RestFindAll(keycloakService::getUsers);
     }
 
     //find by id
