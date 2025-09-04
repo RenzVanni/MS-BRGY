@@ -3,7 +3,7 @@ services:
     name: config-server
     runtime: docker
     rootDir: ./config-server
-    dockerfilePath: ./config-server/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: CONFIG_PORT
