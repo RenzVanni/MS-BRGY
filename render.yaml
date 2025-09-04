@@ -63,128 +63,128 @@ services:
     name: discovery
     runtime: docker
     rootDir: ./discovery
-    dockerfilePath: ./discovery/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: DISCOVERY_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: gateway
     runtime: docker
     rootDir: ./gateway
-    dockerfilePath: ./gateway/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: GATEWAY_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: account
     runtime: docker
     rootDir: ./services/account
-    dockerfilePath: ./services/account/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: ACCOUNT_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: notification
     runtime: docker
     rootDir: ./services/notification
-    dockerfilePath: ./services/notification/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: NOTIFICATION_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: officials
     runtime: docker
     rootDir: ./services/officials
-    dockerfilePath: ./services/officials/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: OFFICIALS_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: payment
     runtime: docker
     rootDir: ./services/payment
-    dockerfilePath: ./services/payment/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: PAYMENT_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: pdfBuilder
     runtime: docker
     rootDir: ./services/PDF_Builder
-    dockerfilePath: ./services/PDF_Builder/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: PDF_BUILDER_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: blotter
     runtime: docker
     rootDir: ./services/reports/blotter
-    dockerfilePath: ./services/reports/blotter/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: BLOTTER_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: complaint
     runtime: docker
     rootDir: ./services/reports/complaint
-    dockerfilePath: ./services/reports/complaint/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: COMPLAINT_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: disasterAndEmergency
     runtime: docker
     rootDir: ./services/reports/disasterAndEmergency
-    dockerfilePath: ./services/reports/disasterAndEmergency/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: DAE_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: healthAndSanitation
     runtime: docker
     rootDir: ./services/reports/healthAndSanitation
-    dockerfilePath: ./services/reports/healthAndSanitation/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: HAS_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: incident
     runtime: docker
     rootDir: ./services/reports/incident
-    dockerfilePath: ./services/reports/incident/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: INCIDENT_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: residents
     runtime: docker
     rootDir: ./services/residents
-    dockerfilePath: ./services/residents/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: RESIDENTS_CONFIG_PATH
-        value: http://localhost:8888
+        value: https://config-server-jyw3.onrender.com
