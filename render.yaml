@@ -63,7 +63,7 @@ services:
     name: discovery
     runtime: docker
     rootDir: ./discovery
-    dockerfilePath: ./discovery/Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     envVars:
       - key: DISCOVERY_CONFIG_PATH
