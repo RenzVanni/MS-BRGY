@@ -32,18 +32,6 @@ services:
         value: //localhost:5402/residents
 
   - type: web
-    name: pgadmin
-    runtime: docker
-    image:
-      url: dpage/pgadmin4:latest
-    plan: free
-    envVars:
-      - key: PGADMIN_DEFAULT_EMAIL
-        value: admin@email.com
-      - key: PGADMIN_DEFAULT_PASSWORD
-        value: admin
-
-  - type: web
     name: discovery
     runtime: docker
     rootDir: ./discovery
