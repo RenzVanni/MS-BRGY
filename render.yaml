@@ -60,6 +60,18 @@ services:
         value: //localhost:5402/residents
 
   - type: web
+    name: pgadmin
+    runtime: docker
+    image:
+      url: elestio/pgadmin:REL-9_6
+    plan: free
+    envVars:
+      - key: PGADMIN_DEFAULT_EMAIL
+        value: admin@email.com
+      - key: PGADMIN_DEFAULT_PASSWORD
+        value: admin
+
+  - type: web
     name: discovery
     runtime: docker
     rootDir: ./discovery
