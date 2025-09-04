@@ -8,18 +8,18 @@ eureka:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8761/eureka}
 
 ports:
-  account: ${ACCOUNT_PORT:7001}
-  officials: ${OFFICIALS_PORT:7002}
-  residents: ${RESIDENTS_PORT:7003}
-  payment: ${PAYMENT_PORT:7004}
-  notification: ${NOTIFICATION_PORT:7005}
-  pdfBuilder: ${PDF_BUILDER_PORT:9000}
+  account: ${PORT:${ACCOUNT_PORT:7001}}
+  officials: ${PORT:${OFFICIALS_PORT:7002}}
+  residents: ${PORT:${RESIDENTS_PORT:7003}}
+  payment: ${PORT:${PAYMENT_PORT:7004}}
+  notification: ${PORT:${NOTIFICATION_PORT:7005}}
+  pdfBuilder: ${PORT:${PDF_BUILDER_PORT:9000}}
 
-  blotter: ${BLOTTER_PORT:7101}
-  complaint: ${COMPLAINT_PORT:7102}
-  dae: ${DAE_PORT:7103}
-  has: ${HAS_PORT:7104}
-  incident: ${INCIDENT_PORT:7105}
+  blotter: ${PORT:${BLOTTER_PORT:7101}}
+  complaint: ${PORT:${COMPLAINT_PORT:7102}}
+  dae: ${PORT:${DAE_PORT:7103}}
+  has: ${PORT:${HAS_PORT:7104}}
+  incident: ${PORT:${INCIDENT_PORT:7105}}
 
-  discovery: ${DISCOVERY_PORT:8761}
-  gateway: ${GATEWAY_PORT:8222}
+  discovery: ${PORT:${DISCOVERY_PORT:8761}}
+  gateway: ${PORT:${GATEWAY_PORT:8222}}

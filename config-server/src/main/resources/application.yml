@@ -12,4 +12,4 @@ spring:
           search-locations: classpath:/configurations
 
 server:
-  port: ${CONFIG_PORT:8888}
+  port: $PORT:${CONFIG_PORT:8888}}
