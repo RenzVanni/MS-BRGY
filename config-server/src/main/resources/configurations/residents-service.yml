@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5402/residents
+    url: jdbc:postgresql:${RESIDENTS_DATASOURCE_URL://localhost:5402/residents}
     username: brgy
     password: residentsdb
   jpa:

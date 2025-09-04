@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5406/disasterAndEmergency
+    url: jdbc:postgresql:${DAE_DATASOURCE_URL://localhost:5406/disasterAndEmergency}
     username: brgy
     password: dae
   jpa:

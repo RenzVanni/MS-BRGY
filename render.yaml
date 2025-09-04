@@ -6,8 +6,58 @@ services:
     dockerfilePath: ./config-server/Dockerfile
     plan: free
     envVars:
-      - key: PORT
+      - key: CONFIG_PORT
         value: 8888
+      - key: ACCOUNT_DATASOURCE_URL
+        value: //localhost:5401/account
+      - key: ACCOUNT_ISSUERPATH
+        value: http://localhost:8080/realms/master
+      - key: ACCOUNT_CLIENT_SECRET
+        value: WAvJxYvKRu2efeem28DeWaQxBxFrKVz6
+      - key: EUREKA_DEFAULT_ZONE
+        value: http://localhost:8761/eureka
+      - key: ACCOUNT_PORT
+        value: 7001
+      - key: OFFICIALS_PORT
+        value: 7002
+      - key: RESIDENTS_PORT
+        value: 7003
+      - key: PAYMENT_PORT
+        value: 7004
+      - key: NOTIFICATION_PORT
+        value: 7005
+      - key: PDF_BUILDER_PORT
+        value: 9000
+      - key: BLOTTER_PORT
+        value: 7101
+      - key: COMPLAINT_PORT
+        value: 7102
+      - key: DAE_PORT
+        value: 7103
+      - key: HAS_PORT
+        value: 7104
+      - key: INCIDENT_PORT
+        value: 7105
+      - key: DISCOVERY_PORT
+        value: 8761
+      - key: GATEWAY_PORT
+        value: 8222
+      - key: BLOTTER_DATASOURCE_URL
+        value: //localhost:5404/blotter
+      - key: COMPLAINT_DATASOURCE_URL
+        value: //localhost:5405/complaint
+      - key: DAE_DATASOURCE_URL
+        value: //localhost:5406/disasterAndEmergency
+      - key: GATEWAY_ISSUERPATH
+        value: http://localhost:8080/realms/master
+      - key: HAS_DATASOURCE_PATH
+        value: //localhost:5407/healthAndSanitation
+      - key: INCIDENT_DATASOURCE_URL
+        value: //localhost:5408/incident
+      - key: OFFICIALS_DATASOURCE_URL
+        value: //localhost:5403/officials
+      - key: RESIDENTS_DATASOURCE_URL
+        value: //localhost:5402/residents
 
   - type: web
     name: discovery
@@ -16,8 +66,8 @@ services:
     dockerfilePath: ./discovery/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 8761
+      - key: DISCOVERY_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: gateway
@@ -26,8 +76,8 @@ services:
     dockerfilePath: ./gateway/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 8222
+      - key: GATEWAY_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: account
@@ -36,8 +86,8 @@ services:
     dockerfilePath: ./services/account/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7001
+      - key: ACCOUNT_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: notification
@@ -46,8 +96,8 @@ services:
     dockerfilePath: ./services/notification/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7005
+      - key: NOTIFICATION_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: officials
@@ -56,8 +106,8 @@ services:
     dockerfilePath: ./services/officials/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7002
+      - key: OFFICIALS_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: payment
@@ -66,8 +116,8 @@ services:
     dockerfilePath: ./services/payment/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7004
+      - key: PAYMENT_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: pdfBuilder
@@ -76,8 +126,8 @@ services:
     dockerfilePath: ./services/PDF_Builder/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 9000
+      - key: PDF_BUILDER_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: blotter
@@ -86,8 +136,8 @@ services:
     dockerfilePath: ./services/reports/blotter/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7101
+      - key: BLOTTER_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: complaint
@@ -96,8 +146,8 @@ services:
     dockerfilePath: ./services/reports/complaint/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7102
+      - key: COMPLAINT_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: disasterAndEmergency
@@ -106,8 +156,8 @@ services:
     dockerfilePath: ./services/reports/disasterAndEmergency/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7103
+      - key: DAE_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: healthAndSanitation
@@ -116,8 +166,8 @@ services:
     dockerfilePath: ./services/reports/healthAndSanitation/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7104
+      - key: HAS_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: incident
@@ -126,8 +176,8 @@ services:
     dockerfilePath: ./services/reports/incident/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7105
+      - key: INCIDENT_CONFIG_PATH
+        value: http://localhost:8888
 
   - type: web
     name: residents
@@ -136,5 +186,5 @@ services:
     dockerfilePath: ./services/residents/Dockerfile
     plan: free
     envVars:
-      - key: PORT
-        value: 7003
+      - key: RESIDENTS_CONFIG_PATH
+        value: http://localhost:8888

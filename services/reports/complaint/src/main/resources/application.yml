@@ -2,4 +2,4 @@ spring:
   application:
     name: complaint-service
   config:
-    import: optional:configserver:http://localhost:8888
+    import: optional:configserver:${COMPLAINT_CONFIG_PATH:http://localhost:8888}

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5404/blotter
+    url: jdbc:postgresql:${BLOTTER_DATASOURCE_URL://localhost:5404/blotter}
     username: brgy
     password: blotter
   jpa:

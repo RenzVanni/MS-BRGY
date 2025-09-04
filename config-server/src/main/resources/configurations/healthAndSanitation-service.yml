@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5407/healthAndSanitation
+    url: jdbc:postgresql:${HAS_DATASOURCE_PATH://localhost:5407/healthAndSanitation}
     username: brgy
     password: has
   jpa:

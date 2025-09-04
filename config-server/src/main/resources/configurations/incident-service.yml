@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5408/incident
+    url: jdbc:postgresql:${INCIDENT_DATASOURCE_URL://localhost:5408/incident}
     username: brgy
     password: incident
   jpa:

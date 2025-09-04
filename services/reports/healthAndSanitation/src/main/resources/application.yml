@@ -2,4 +2,4 @@ spring:
   application:
     name: healthAndSanitation-service
   config:
-    import: optional:configserver:http://localhost:8888
+    import: optional:configserver:${HAS_CONFIG_PATH:http://localhost:8888}

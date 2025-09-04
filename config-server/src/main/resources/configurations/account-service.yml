@@ -1,12 +1,6 @@
 spring:
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          issuer-uri: ${jwt.auth.issuerPath}
-#          jwk-set-uri: ${jwt.auth.issuerPath}/protocol/openid-connect/certs
   datasource:
-    url: jdbc:postgresql://localhost:5401/account
+    url: jdbc:postgresql:${ACCOUNT_DATASOURCE_URL://localhost:5401/account}
     username: brgy
     password: accountdb
   jpa:
@@ -18,9 +12,9 @@ spring:
 
 jwt:
   auth:
-    issuerPath: http://localhost:8080/realms/master
+    issuerPath: ${ACCOUNT_ISSUERPATH:http://localhost:8080/realms/master}
     client-id: authId
-    client-secret: WAvJxYvKRu2efeem28DeWaQxBxFrKVz6
+    client-secret: ${ACCOUNT_CLIENT_SECRET:WAvJxYvKRu2efeem28DeWaQxBxFrKVz6}
     principle-attribute: preferred_username
     realm-name: master
     resident-id: resident_id

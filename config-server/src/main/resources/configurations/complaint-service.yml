@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5405/complaint
+    url: jdbc:postgresql:${COMPLAINT_DATASOURCE_URL://localhost:5405/complaint}
     username: brgy
     password: complaint
   jpa:
