@@ -35,7 +35,7 @@ services:
     name: pgadmin
     runtime: docker
     image:
-      url: elestio/pgadmin:REL-9_6
+      url: dpage/pgadmin4:latest
     plan: free
     envVars:
       - key: PGADMIN_DEFAULT_EMAIL
