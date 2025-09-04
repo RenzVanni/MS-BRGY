@@ -6,8 +6,6 @@ services:
     dockerfilePath: Dockerfile
     plan: free
     envVars:
-#      - key: CONFIG_PORT
-#        value: 8888
       - key: ACCOUNT_DATASOURCE_URL
         value: //localhost:5401/account
       - key: ACCOUNT_ISSUERPATH
@@ -15,33 +13,7 @@ services:
       - key: ACCOUNT_CLIENT_SECRET
         value: WAvJxYvKRu2efeem28DeWaQxBxFrKVz6
       - key: EUREKA_DEFAULT_ZONE
-        value: http://localhost:8761/eureka
-#      - key: ACCOUNT_PORT
-#        value: 7001
-#      - key: OFFICIALS_PORT
-#        value: 7002
-#      - key: RESIDENTS_PORT
-#        value: 7003
-#      - key: PAYMENT_PORT
-#        value: 7004
-#      - key: NOTIFICATION_PORT
-#        value: 7005
-#      - key: PDF_BUILDER_PORT
-#        value: 9000
-#      - key: BLOTTER_PORT
-#        value: 7101
-#      - key: COMPLAINT_PORT
-#        value: 7102
-#      - key: DAE_PORT
-#        value: 7103
-#      - key: HAS_PORT
-#        value: 7104
-#      - key: INCIDENT_PORT
-#        value: 7105
-#      - key: DISCOVERY_PORT
-#        value: 8761
-#      - key: GATEWAY_PORT
-#        value: 8222
+        value: https://discovery-2ike.onrender.com/eureka
       - key: BLOTTER_DATASOURCE_URL
         value: //localhost:5404/blotter
       - key: COMPLAINT_DATASOURCE_URL
