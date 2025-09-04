@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql:${ACCOUNT_DATASOURCE_URL://localhost:5401/account}
     username: brgy
-    password: accountdb
+    password: ${ACCOUNT_DATASOURCE_PASSWORD:accountdb}
   jpa:
     hibernate:
       ddl-auto: update
