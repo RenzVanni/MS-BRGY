@@ -4,6 +4,9 @@ spring:
     username: brgy
     password: ${ACCOUNT_DATASOURCE_PASSWORD:accountdb}
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
   sql:
