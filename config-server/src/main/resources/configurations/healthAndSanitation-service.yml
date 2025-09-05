@@ -1,9 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql:${HAS_DATASOURCE_PATH://localhost:5407/healthAndSanitation}
+    url: jdbc:postgresql:${DATASOURCE_PATH://localhost:5407}/healthAndSanitation
     username: brgy
-    password: has
+    password: ${DATASOURCE_PASSWORD:has}
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: validate
     show-sql: true

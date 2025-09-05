@@ -1,9 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql:${RESIDENTS_DATASOURCE_URL://localhost:5402/residents}
+    url: jdbc:postgresql:${DATASOURCE_URL://localhost:5402}/residents
     username: brgy
-    password: residentsdb
+    password: ${DATASOURCE_PASSWORD:residentsdb}
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
   sql:

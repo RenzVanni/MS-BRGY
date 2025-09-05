@@ -1,9 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql:${COMPLAINT_DATASOURCE_URL://localhost:5405/complaint}
+    url: jdbc:postgresql:${DATASOURCE_URL://localhost:5405}/complaint
     username: brgy
-    password: complaint
+    password: ${DATASOURCE_PASSWORD:complaint}
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: validate
     show-sql: true
