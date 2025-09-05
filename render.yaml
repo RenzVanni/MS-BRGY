@@ -6,12 +6,8 @@ services:
     dockerfilePath: Dockerfile
     plan: free
     envVars:
-      - key: ACCOUNT_ISSUERPATH
-        value: http://localhost:8080/realms/master
-      - key: ACCOUNT_CLIENT_SECRET
-        value: WAvJxYvKRu2efeem28DeWaQxBxFrKVz6
       - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com/eureka
+        value: https://discovery-2ike.onrender.com
       - key: BLOTTER_DATASOURCE_URL
         value: //localhost:5404/blotter
       - key: COMPLAINT_DATASOURCE_URL
@@ -38,6 +34,8 @@ services:
     envVars:
       - key: DISCOVERY_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: gateway
@@ -48,6 +46,8 @@ services:
     envVars:
       - key: GATEWAY_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: account
@@ -68,6 +68,8 @@ services:
     envVars:
       - key: NOTIFICATION_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: officials
@@ -78,6 +80,8 @@ services:
     envVars:
       - key: OFFICIALS_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: payment
@@ -88,6 +92,8 @@ services:
     envVars:
       - key: PAYMENT_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: pdfBuilder
@@ -98,6 +104,8 @@ services:
     envVars:
       - key: PDF_BUILDER_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: blotter
@@ -108,6 +116,9 @@ services:
     envVars:
       - key: BLOTTER_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
+
 
   - type: web
     name: complaint
@@ -118,6 +129,8 @@ services:
     envVars:
       - key: COMPLAINT_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: disasterAndEmergency
@@ -128,6 +141,8 @@ services:
     envVars:
       - key: DAE_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: healthAndSanitation
@@ -138,6 +153,8 @@ services:
     envVars:
       - key: HAS_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: incident
@@ -148,6 +165,8 @@ services:
     envVars:
       - key: INCIDENT_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: residents
@@ -158,3 +177,5 @@ services:
     envVars:
       - key: RESIDENTS_CONFIG_PATH
         value: https://config-server-jyw3.onrender.com
+      - key: EUREKA_DEFAULT_ZONE
+        value: https://discovery-2ike.onrender.com
