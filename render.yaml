@@ -6,10 +6,6 @@ services:
     dockerfilePath: Dockerfile
     plan: free
     envVars:
-      - key: ACCOUNT_DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com/account
-      - key: ACCOUNT_DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
       - key: ACCOUNT_ISSUERPATH
         value: http://localhost:8080/realms/master
       - key: ACCOUNT_CLIENT_SECRET
