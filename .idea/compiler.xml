@@ -22,21 +22,7 @@
         </processorPath>
         <module name="account" />
       </profile>
-      <profile name="Annotation profile for incident" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
-        </processorPath>
-        <module name="blotter" />
-        <module name="PDF_Builder" />
-        <module name="complaint" />
-        <module name="healthAndSanitation" />
-        <module name="incident" />
-        <module name="disasterAndEmergency" />
-      </profile>
-      <profile name="Annotation profile for residents" enabled="true">
+      <profile name="Annotation profile for healthAndSanitation" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -44,10 +30,16 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
+        <module name="notification" />
+        <module name="PDF_Builder" />
+        <module name="blotter" />
+        <module name="complaint" />
         <module name="officials" />
         <module name="residents" />
-        <module name="notification" />
         <module name="payment" />
+        <module name="healthAndSanitation" />
+        <module name="incident" />
+        <module name="disasterAndEmergency" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
