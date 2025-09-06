@@ -5,25 +5,6 @@ services:
     rootDir: ./config-server
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: BLOTTER_DATASOURCE_URL
-        value: //localhost:5404/blotter
-      - key: COMPLAINT_DATASOURCE_URL
-        value: //localhost:5405/complaint
-      - key: DAE_DATASOURCE_URL
-        value: //localhost:5406/disasterAndEmergency
-      - key: GATEWAY_ISSUERPATH
-        value: http://localhost:8080/realms/master
-      - key: HAS_DATASOURCE_PATH
-        value: //localhost:5407/healthAndSanitation
-      - key: INCIDENT_DATASOURCE_URL
-        value: //localhost:5408/incident
-      - key: OFFICIALS_DATASOURCE_URL
-        value: //localhost:5403/officials
-      - key: RESIDENTS_DATASOURCE_URL
-        value: //localhost:5402/residents
 
   - type: web
     name: discovery
@@ -31,11 +12,6 @@ services:
     rootDir: ./discovery
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: DISCOVERY_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: gateway
@@ -43,11 +19,6 @@ services:
     rootDir: ./gateway
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: GATEWAY_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: account
@@ -55,9 +26,6 @@ services:
     rootDir: ./services/account
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: ACCOUNT_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
 
   - type: web
     name: notification
@@ -65,11 +33,6 @@ services:
     rootDir: ./services/notification
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: NOTIFICATION_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: officials
@@ -77,15 +40,6 @@ services:
     rootDir: ./services/officials
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: OFFICIALS_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com
-      - key: DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
 
   - type: web
     name: payment
@@ -93,11 +47,6 @@ services:
     rootDir: ./services/payment
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: PAYMENT_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: pdfBuilder
@@ -105,11 +54,6 @@ services:
     rootDir: ./services/PDF_Builder
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: PDF_BUILDER_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
 
   - type: web
     name: blotter
@@ -117,16 +61,6 @@ services:
     rootDir: ./services/reports/blotter
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: BLOTTER_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com
-      - key: DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
-
 
   - type: web
     name: complaint
@@ -134,15 +68,6 @@ services:
     rootDir: ./services/reports/complaint
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: COMPLAINT_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com
-      - key: DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
 
   - type: web
     name: disasterAndEmergency
@@ -150,15 +75,6 @@ services:
     rootDir: ./services/reports/disasterAndEmergency
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: DAE_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com
-      - key: DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
 
   - type: web
     name: healthAndSanitation
@@ -166,15 +82,6 @@ services:
     rootDir: ./services/reports/healthAndSanitation
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: HAS_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com
-      - key: DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
 
   - type: web
     name: incident
@@ -182,15 +89,6 @@ services:
     rootDir: ./services/reports/incident
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: INCIDENT_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com
-      - key: DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
 
   - type: web
     name: residents
@@ -198,12 +96,3 @@ services:
     rootDir: ./services/residents
     dockerfilePath: Dockerfile
     plan: free
-    envVars:
-      - key: RESIDENTS_CONFIG_PATH
-        value: https://config-server-jyw3.onrender.com
-      - key: EUREKA_DEFAULT_ZONE
-        value: https://discovery-2ike.onrender.com
-      - key: DATASOURCE_URL
-        value: //dpg-d2ssm7euk2gs73c936a0-a.oregon-postgres.render.com
-      - key: DATASOURCE_PASSWORD
-        value: I6nCKOlwptnvFBuxvkMlGIDBFRpMVdRM
