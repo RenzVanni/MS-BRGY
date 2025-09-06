@@ -1,9 +1,9 @@
 package com.ms_spring_brgy.healthAndSanitation.controller;
 
-import com.ms_spring_brgy.constants.MappingPath;
+import com.ms_spring_brgy.healthAndSanitation.constants.MappingPath;
 import com.ms_spring_brgy.healthAndSanitation.model.HAS_Model;
 import com.ms_spring_brgy.healthAndSanitation.services.HAS_Service;
-import com.ms_spring_brgy.utils.Rest_Utils;
+import com.ms_spring_brgy.healthAndSanitation.utils.Rest_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

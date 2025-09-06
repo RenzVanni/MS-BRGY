@@ -1,9 +1,9 @@
 package com.ms_spring_brgy.complaint.controller;
 
+import com.ms_spring_brgy.complaint.constants.MappingPath;
 import com.ms_spring_brgy.complaint.model.Complaint_Model;
 import com.ms_spring_brgy.complaint.services.Complaint_Service;
-import com.ms_spring_brgy.constants.MappingPath;
-import com.ms_spring_brgy.utils.Rest_Utils;
+import com.ms_spring_brgy.complaint.utils.Rest_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

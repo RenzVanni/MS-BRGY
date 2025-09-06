@@ -2,8 +2,8 @@ package com.ms_spring_brgy.disasterAndEmergency.services;
 
 import com.ms_spring_brgy.disasterAndEmergency.model.DAE_Model;
 import com.ms_spring_brgy.disasterAndEmergency.repository.DAE_Repository;
-import com.ms_spring_brgy.utils.Crud_Utils;
-import com.ms_spring_brgy.utils.Service_Utils;
+import com.ms_spring_brgy.disasterAndEmergency.utils.Crud_Utils;
+import com.ms_spring_brgy.disasterAndEmergency.utils.Service_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

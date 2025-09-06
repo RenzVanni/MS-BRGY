@@ -2,8 +2,8 @@ package com.ms_spring_brgy.incident.service;
 
 import com.ms_spring_brgy.incident.model.Incident_Model;
 import com.ms_spring_brgy.incident.repository.Incident_Repository;
-import com.ms_spring_brgy.utils.Crud_Utils;
-import com.ms_spring_brgy.utils.Service_Utils;
+import com.ms_spring_brgy.incident.utils.Crud_Utils;
+import com.ms_spring_brgy.incident.utils.Service_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

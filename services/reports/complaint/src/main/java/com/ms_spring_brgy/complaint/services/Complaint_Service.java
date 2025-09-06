@@ -2,8 +2,8 @@ package com.ms_spring_brgy.complaint.services;
 
 import com.ms_spring_brgy.complaint.model.Complaint_Model;
 import com.ms_spring_brgy.complaint.repository.Complaint_Repository;
-import com.ms_spring_brgy.utils.Crud_Utils;
-import com.ms_spring_brgy.utils.Service_Utils;
+import com.ms_spring_brgy.complaint.utils.Crud_Utils;
+import com.ms_spring_brgy.complaint.utils.Service_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

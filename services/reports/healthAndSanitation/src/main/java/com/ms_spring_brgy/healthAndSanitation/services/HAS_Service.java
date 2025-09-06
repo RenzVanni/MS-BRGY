@@ -2,8 +2,8 @@ package com.ms_spring_brgy.healthAndSanitation.services;
 
 import com.ms_spring_brgy.healthAndSanitation.model.HAS_Model;
 import com.ms_spring_brgy.healthAndSanitation.repository.HAS_Repository;
-import com.ms_spring_brgy.utils.Crud_Utils;
-import com.ms_spring_brgy.utils.Service_Utils;
+import com.ms_spring_brgy.healthAndSanitation.utils.Crud_Utils;
+import com.ms_spring_brgy.healthAndSanitation.utils.Service_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

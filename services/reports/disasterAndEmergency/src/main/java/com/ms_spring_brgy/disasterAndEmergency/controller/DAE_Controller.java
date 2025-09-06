@@ -1,9 +1,9 @@
 package com.ms_spring_brgy.disasterAndEmergency.controller;
 
-import com.ms_spring_brgy.constants.MappingPath;
+import com.ms_spring_brgy.disasterAndEmergency.constants.MappingPath;
 import com.ms_spring_brgy.disasterAndEmergency.model.DAE_Model;
 import com.ms_spring_brgy.disasterAndEmergency.services.DAE_Service;
-import com.ms_spring_brgy.utils.Rest_Utils;
+import com.ms_spring_brgy.disasterAndEmergency.utils.Rest_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

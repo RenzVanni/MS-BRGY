@@ -1,9 +1,9 @@
 package com.ms_spring_brgy.incident.controller;
 
-import com.ms_spring_brgy.constants.MappingPath;
+import com.ms_spring_brgy.incident.constants.MappingPath;
 import com.ms_spring_brgy.incident.model.Incident_Model;
 import com.ms_spring_brgy.incident.service.Incident_Service;
-import com.ms_spring_brgy.utils.Rest_Utils;
+import com.ms_spring_brgy.incident.utils.Rest_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

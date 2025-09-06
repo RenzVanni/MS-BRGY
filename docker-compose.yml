@@ -12,6 +12,19 @@ services:
       - "5001:8080"
     restart: unless-stopped
 
+  brgy-database:
+    container_name: brgydb
+    image: postgres
+    environment:
+      POSTGRES_USER: brgy
+      POSTGRES_PASSWORD: brgydb
+      PGDATA: /var/lib/postgresql/data/brgy
+    volumes:
+      - brgy-data:/var/lib/postgresql/data/brgy
+    ports:
+      - "5439:5432"
+    restart: unless-stopped
+
   postgres_account:
     container_name: accountdb
     image: postgres
@@ -163,6 +176,7 @@ volumes:
   incident-db-data:
   pgadmin:
   keycloak-data:
+  brgy-data:
 
 networks:
   app-tier:

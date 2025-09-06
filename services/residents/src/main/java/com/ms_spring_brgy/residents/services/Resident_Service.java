@@ -35,22 +35,25 @@ public class Resident_Service {
     public Resident_Model postAddResident(MultipartFile imageFile,
                                          Resident_Model resident) {
         try {
-            var saveInFolder = ObjectUtils.asMap(
-                    "folder", "residents"
-            );
+            if(!imageFile.isEmpty()) {
+                var saveInFolder = ObjectUtils.asMap(
+                        "folder", "residents"
+                );
 
-            var cloudinaryData = cloudinary
-                    .uploader()
-                    .upload( imageFile.getBytes(), saveInFolder);
+                var cloudinaryData = cloudinary
+                        .uploader()
+                        .upload(imageFile.getBytes(), saveInFolder);
 
-            String url = cloudinaryData.get("secure_url").toString();
+                String url = cloudinaryData.get("secure_url").toString();
 
-            resident.setProfile_image_url(url);
+                resident.setProfile_image_url(url);
+            }
 
-            return repo.save(resident);
         } catch (Exception e) {
-            throw new RuntimeException("Something Went Wrong!");
+            throw new RuntimeException("Something went wrong setting image profile!");
         }
+
+        return repo.save(resident);
     }
 
     //add multiple

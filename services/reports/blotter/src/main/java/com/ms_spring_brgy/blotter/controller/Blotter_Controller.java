@@ -1,9 +1,9 @@
 package com.ms_spring_brgy.blotter.controller;
 
+import com.ms_spring_brgy.blotter.constants.MappingPath;
 import com.ms_spring_brgy.blotter.model.Blotter_Model;
 import com.ms_spring_brgy.blotter.services.Blotter_Service;
-import com.ms_spring_brgy.constants.MappingPath;
-import com.ms_spring_brgy.utils.Rest_Utils;
+import com.ms_spring_brgy.blotter.utils.Rest_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

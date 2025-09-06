@@ -2,8 +2,8 @@ package com.ms_spring_brgy.blotter.services;
 
 import com.ms_spring_brgy.blotter.model.Blotter_Model;
 import com.ms_spring_brgy.blotter.repository.Blotter_Repository;
-import com.ms_spring_brgy.utils.Crud_Utils;
-import com.ms_spring_brgy.utils.Service_Utils;
+import com.ms_spring_brgy.blotter.utils.Crud_Utils;
+import com.ms_spring_brgy.blotter.utils.Service_Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

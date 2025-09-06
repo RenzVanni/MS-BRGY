@@ -1,6 +1,6 @@
 package com.ms_spring_brgy.residents.controller;
 
-import com.ms_spring_brgy.constants.MappingPath;
+import com.ms_spring_brgy.residents.constants.MappingPath;
 import com.ms_spring_brgy.residents.controller.component.REST_Component;
 import com.ms_spring_brgy.residents.enums.Citizenship;
 import com.ms_spring_brgy.residents.model.Resident_Model;

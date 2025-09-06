@@ -1,17 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql:${ACCOUNT_DATASOURCE_URL://localhost:5401}/account
-    username: brgy
-    password: ${ACCOUNT_DATASOURCE_PASSWORD:accountdb}
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
-  sql:
-    init:
-      mode: always
+    url: jdbc:postgresql:${DATASOURCE_URL://localhost:5439}/account
 
 jwt:
   auth:
