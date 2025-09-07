@@ -26,9 +26,6 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
     @Value("${jwt.auth.client-id}")
     String clientId;
 
-    @Value("${jwt.auth.principle-attribute}")
-    String principleAttribute;
-
     @Override
     public AbstractAuthenticationToken convert(Jwt source) {
         Collection<GrantedAuthority> authorities = Stream.concat(
