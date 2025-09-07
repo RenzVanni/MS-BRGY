@@ -41,17 +41,17 @@ public class Security_Config {
                 .oauth2ResourceServer(customizer -> customizer
                         .bearerTokenConverter(new CookieConverter())
                         .jwt(jwtConfigurer -> jwtConfigurer
-                                .jwtAuthenticationConverter(reactiveJwtAuthConverter(jwtAuthConverter)))
+                                .jwtAuthenticationConverter(new ReactiveJwtAuthenticationConverterAdapter(jwtAuthConverter)))
                         .authenticationEntryPoint(cLearExpiredCookie));
 
 
         return http.build();
     }
 
-    @Bean
-    public Converter<Jwt, ? extends Mono<? extends AbstractAuthenticationToken>> reactiveJwtAuthConverter(JwtAuthConverter jwtAuthConverter) {
-        return new ReactiveJwtAuthenticationConverterAdapter(jwtAuthConverter);
-    }
+//    @Bean
+//    public Converter<Jwt, ? extends Mono<? extends AbstractAuthenticationToken>> reactiveJwtAuthConverter(JwtAuthConverter jwtAuthConverter) {
+//        return new ReactiveJwtAuthenticationConverterAdapter(jwtAuthConverter);
+//    }
 
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
