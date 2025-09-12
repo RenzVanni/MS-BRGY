@@ -1,10 +1,10 @@
 package com.ms_spring_brgy.residents.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Getter
 public enum Citizenship {
     FILIPINO("Filipino"),
     AMERICAN("American"),
@@ -34,4 +34,9 @@ public enum Citizenship {
     OTHERS("Others");
 
     private final String label;
+
+    @JsonValue
+    public String getLabel() {
+        return label;
+    }
 }

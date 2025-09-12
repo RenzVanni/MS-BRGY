@@ -127,7 +127,7 @@ public class Resident_Service {
             return repo.save(existing);
 
         } catch (Exception e) {
-            throw new RuntimeException("Something Went Wrong!");
+            throw new RuntimeException("Something Went Wrong!: " + e );
         }
     }
 
