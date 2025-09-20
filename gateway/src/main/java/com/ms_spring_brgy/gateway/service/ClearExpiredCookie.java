@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 public class ClearExpiredCookie implements ServerAuthenticationEntryPoint {
     @Override
     public Mono<Void> commence(ServerWebExchange exchange, AuthenticationException ex) {
-        ResponseCookie deleteCookie = ResponseCookie.from("access_token")
+        ResponseCookie deleteCookie = ResponseCookie.from("access_token", "")
                 .path("/")
                 .maxAge(0)
                 .httpOnly(true)

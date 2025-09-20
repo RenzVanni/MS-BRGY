@@ -32,7 +32,7 @@ public class Security_Config {
         http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(customizer -> customizer
-                        .pathMatchers("/api/v1/accounts/login").permitAll()
+                        .pathMatchers("/api/v1/accounts/login", "/api/v1/accounts/export").permitAll()
 //                        .pathMatchers("/api/v1/accounts/**").authenticated()
                         .anyExchange().authenticated()
                 );

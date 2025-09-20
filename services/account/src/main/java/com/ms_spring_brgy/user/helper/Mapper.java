@@ -19,6 +19,33 @@ public class Mapper {
     @Value("${jwt.auth.resident-id}")
     private String residentId;
 
+    public Auth_Response_DTO mapUserRepresentation(UserRepresentation user, RealmResource keycloak, String clientUUID) {
+        Long convertResidentId = Long.valueOf(user.getAttributes().get("resident_id").get(0));
+
+        //fetch roles
+        List<RoleRepresentation> roleRepresentations = keycloak
+                .users()
+                .get(user.getId())
+                .roles()
+                .clientLevel(clientUUID)
+                .listEffective();
+
+        //map roles and fetch only the name
+        List<String> roles = roleRepresentations
+                .stream()
+                .map(RoleRepresentation::getName)
+                .toList();
+
+        return Auth_Response_DTO
+                .builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .resident_id(convertResidentId)
+                .role(roles)
+                .build();
+    }
+
     public List<Auth_Response_DTO> authResponseMapper(List<UserRepresentation> body, RealmResource keycloak, String clientUUID) {
         return body
                 .stream()
