@@ -3,3 +3,8 @@ spring:
     name: account-service
   config:
     import: optional:configserver:${ACCOUNT_CONFIG_PATH:http://localhost:8888}
+
+logging:
+  level:
+    org.springframework.cache: TRACE
+

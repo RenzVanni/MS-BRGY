@@ -21,9 +21,12 @@ public class Resident_Service {
     private final Crud_Service<Resident_Model> crudService;
     private final Cloudinary cloudinary;
 
-    //find all residents
-    public List<Resident_Model> getAllResidents() {
-        return crudService.customFindAll();
+    /**
+     * Paginate residents
+     * @return
+     */
+    public List<Resident_Model> paginateResidents(int page) {
+        return repo.paginateResident(page);
     }
 
     //find resident by ID

@@ -1,6 +1,9 @@
 package com.ms_spring_brgy.officials.services;
 
+import com.ms_spring_brgy.officials.dto.RequestOfficialDTO;
+import com.ms_spring_brgy.officials.dto.UpdateOfficialDTO;
 import com.ms_spring_brgy.officials.enums.Position;
+import com.ms_spring_brgy.officials.exception.AlreadyExistsException;
 import com.ms_spring_brgy.officials.model.Official_Model;
 import com.ms_spring_brgy.officials.repository.Officials_Repository;
 import com.ms_spring_brgy.officials.services.components.Crud_Service;
@@ -19,9 +22,13 @@ import java.util.stream.Stream;
 public class Officials_Service {
     private final Officials_Repository repo;
     private final Crud_Service<Official_Model> crudService;
-    // list all officials
-    public List<Official_Model> getAllOfficials() {
-        return crudService.customFindAll();
+
+    /**
+     * Paginate official
+     * @return
+     */
+    public List<Official_Model> paginateOfficials(int page) {
+        return repo.paginateOfficials(page);
     }
 
     //find official by id
@@ -29,19 +36,32 @@ public class Officials_Service {
         return crudService.customFindById(id);
     }
 
-    //add official
-    public Official_Model postAddOfficial(Official_Model body) {
-        return repo.save(body);
+    /**
+     * Create official
+     * @param body
+     * @return
+     */
+    public Official_Model createOfficial(RequestOfficialDTO body) {
+        if(repo.isOfficialExists(body.position().name())) {
+            throw new AlreadyExistsException("Official position already exists");
+        }
+        Official_Model response = Official_Model.builder()
+                .term_start(body.term_start())
+                .term_end(body.term_end())
+                .resident_id(body.resident_id())
+                .position(body.position())
+                .build();
+        return repo.save(response);
     }
 
     //update official
-    public Official_Model patchUpdateOfficial(Official_Model body) {
-        Official_Model exist = crudService.customFindById(body.getId());
+    public Official_Model patchUpdateOfficial(UpdateOfficialDTO body) {
+        Official_Model exist = crudService.customFindById(body.id());
 
-        Service_Component.updateService(exist.getTerm_end(), body.getTerm_end(), exist::setTerm_end);
-        Service_Component.updateService(exist.getTerm_start(), body.getTerm_start(), exist::setTerm_start);
-        Service_Component.updateService(exist.getResident_id(), body.getResident_id(), exist::setResident_id);
-        Service_Component.updateService(exist.getPosition(), body.getPosition(), exist::setPosition);
+        Service_Component.updateService(exist.getTerm_end(), body.term_end(), exist::setTerm_end);
+        Service_Component.updateService(exist.getTerm_start(), body.term_start(), exist::setTerm_start);
+        Service_Component.updateService(exist.getResident_id(), body.resident_id(), exist::setResident_id);
+        Service_Component.updateService(exist.getPosition(), body.position(), exist::setPosition);
 
         return repo.save(exist);
     }

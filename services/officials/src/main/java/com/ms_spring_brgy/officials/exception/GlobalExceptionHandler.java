@@ -1,4 +1,4 @@
-package com.ms_spring_brgy.user.exception;
+package com.ms_spring_brgy.officials.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

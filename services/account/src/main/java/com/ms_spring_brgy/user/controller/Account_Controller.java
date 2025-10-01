@@ -3,42 +3,36 @@ package com.ms_spring_brgy.user.controller;
 import com.ms_spring_brgy.user.constants.UserData;
 import com.ms_spring_brgy.user.controller.component.Rest_Component;
 import com.ms_spring_brgy.user.dto.Auth_Response_DTO;
-import com.ms_spring_brgy.user.dto.ImportedUserDTO;
 import com.ms_spring_brgy.user.dto.LoginRequestDTO;
 import com.ms_spring_brgy.user.dto.UpdateUserRequestDTO;
-import com.ms_spring_brgy.user.model.Account_Model;
-import com.ms_spring_brgy.user.services.Account_Service;
 import com.ms_spring_brgy.user.services.Keycloak_Service;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import jakarta.ws.rs.WebApplicationException;
 import lombok.RequiredArgsConstructor;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.keycloak.representations.idm.UserRepresentation;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseCookie;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/accounts")
 @RequiredArgsConstructor
 public class Account_Controller {
-//    private final Account_Service service;
     private final Keycloak_Service keycloakService;
+    private final RestTemplate restTemplate;
 
     /**
      * Register
@@ -46,10 +40,10 @@ public class Account_Controller {
      * @return
      */
     @PostMapping("/register")
-    public ResponseEntity<UserRepresentation> createUserInKeycloak(@Valid @RequestBody UserData body) {
+    public ResponseEntity<Map<String, String>> createUserInKeycloak(@Valid @RequestBody UserData body) {
 //        try {
-            keycloakService.createUser(body);
-            return ResponseEntity.ok().build();
+            Map<String, String> response = keycloakService.createUser(body);
+            return ResponseEntity.ok().body(response);
 //        } catch (Exception e) {
 //            throw new RuntimeException(e.getMessage());
 //        }
@@ -209,12 +203,16 @@ public class Account_Controller {
     }
 
     /**
-     * Find all users
+     * Paginate users
      * @return
      */
     @GetMapping
-    public ResponseEntity<List<Auth_Response_DTO>> findAllAccount() {
-        return Rest_Component.RestFindAll(keycloakService::getUsers);
+    public ResponseEntity<Map<String, Object>> paginateUsers(@RequestParam(defaultValue = "0") int page) {
+        Map<String, Object> response = keycloakService.paginateUsers(page);
+        if(response.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
@@ -233,18 +231,12 @@ public class Account_Controller {
      * @return
      */
     @PutMapping("/update")
-    public ResponseEntity<String> updateAccount(@RequestBody UpdateUserRequestDTO body) {
-        try {
+    public ResponseEntity<String> updateAccount(@RequestBody @Valid UpdateUserRequestDTO body) {
             keycloakService.updateUser(body);
 
             return ResponseEntity
                     .ok()
                     .body("User Update Successfully!");
-
-        } catch (Exception e) {
-
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        }
     }
 
     /**

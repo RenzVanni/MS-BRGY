@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.List;
 
-@Component
 @RequiredArgsConstructor
 public class Crud_Utils<T> {
     private final JpaRepository<T, Integer> repo;

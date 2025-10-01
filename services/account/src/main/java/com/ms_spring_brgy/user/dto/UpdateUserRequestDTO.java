@@ -1,21 +1,25 @@
 package com.ms_spring_brgy.user.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 public record UpdateUserRequestDTO(
-        @NotNull(message = "ID required!")
         String id,
 
-        @NotNull(message = "Username required!")
+        @NotBlank(message = "Username required!")
         String username,
 
-        @NotNull(message = "Resident ID required!")
+        @NotBlank(message = "Email required!")
         String email,
 
-        @NotNull(message = "Resident ID required!")
+        @NotNull(message = "Resident ID cannot be null!")
         Long residentId,
 
-        @NotNull(message = "Account Role required!")
-        String role
+        @Size(min = 1, message = "Provide at least one role")
+        List<String> role
 ) {
 }

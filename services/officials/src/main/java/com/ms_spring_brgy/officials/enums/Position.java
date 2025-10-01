@@ -1,5 +1,6 @@
 package com.ms_spring_brgy.officials.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -12,5 +13,6 @@ public enum Position {
     BARANGAY_SECRETARY("Barangay Secretary"),
     BARANGAY_TREASURER("Barangay Treasurer");
 
+    @JsonValue
     private final String label;
 }

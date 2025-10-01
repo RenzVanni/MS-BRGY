@@ -3,6 +3,7 @@ package com.ms_spring_brgy.officials.model;
 import com.ms_spring_brgy.officials.enums.Position;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "officials")
+@Builder
 public class Official_Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -28,10 +28,14 @@ public class Residents_Controller {
         return ResponseEntity.ok(list);
     }
 
-    //find all resident
+    /**
+     * Paginate residents
+     * @param page
+     * @return
+     */
     @GetMapping
-    public ResponseEntity<List<Resident_Model>> findAllResidents() {
-        return REST_Component.RestFindAll(service::getAllResidents);
+    public ResponseEntity<List<Resident_Model>> paginateResidents(@RequestParam(defaultValue = "0") int page) {
+        return REST_Component.RestFindAll(() -> service.paginateResidents(page));
     }
 
     //find resident by ID

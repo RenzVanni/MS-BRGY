@@ -1,9 +1,11 @@
 package com.ms_spring_brgy.officials.controller;
 
 import com.ms_spring_brgy.officials.controller.component.Rest_Component;
+import com.ms_spring_brgy.officials.dto.RequestOfficialDTO;
+import com.ms_spring_brgy.officials.dto.UpdateOfficialDTO;
 import com.ms_spring_brgy.officials.model.Official_Model;
 import com.ms_spring_brgy.officials.services.Officials_Service;
-import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,27 +18,38 @@ import java.util.List;
 public class Officials_Controller {
     private final Officials_Service service;
 
-    //list all officials
+    /**
+     * Paginate officials
+     * @return
+     */
     @GetMapping
-    public ResponseEntity<List<Official_Model>> allOfficials() {
-        return Rest_Component.RestFindAll(service::getAllOfficials);
+    public ResponseEntity<List<Official_Model>> paginateOfficials(@RequestParam(name = "page", defaultValue = "0") int page) {
+        return Rest_Component.RestFindAll(() -> service.paginateOfficials(page));
     }
 
-    //find official by id
+    /**
+     * Find official by id
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Official_Model> findOfficialById(@PathVariable int id) {
         return Rest_Component.RestFindById(() -> service.getOfficialById(id));
     }
 
-    //add official
+    /**
+     * Create official
+     * @param body
+     * @return
+     */
     @PostMapping("/add")
-    public ResponseEntity<Official_Model> addOfficial(@RequestBody Official_Model body) {
-        return Rest_Component.RestAdd(() -> service.postAddOfficial(body));
+    public ResponseEntity<Official_Model> createOfficial(@Valid @RequestBody RequestOfficialDTO body) {
+        return Rest_Component.RestAdd(() -> service.createOfficial(body));
     }
 
     //update official
     @PatchMapping("/update")
-    public ResponseEntity<Official_Model> updateOfficial(@RequestBody Official_Model body) {
+    public ResponseEntity<Official_Model> updateOfficial(@Valid @RequestBody UpdateOfficialDTO body) {
         return  Rest_Component.RestUpdate(() -> service.patchUpdateOfficial(body));
     }
     //delete by Id
